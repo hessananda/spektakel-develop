@@ -1,0 +1,168 @@
+body {margin: 0;}
+.demo-layout-transparent {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(images/slide02.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.detil-layout-transparent {
+  background: url(images/jazz-atas-awan.jpg);
+  background-position: 50% 90%;
+}
+
+
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+
+.premium {
+   text-align: center;
+   text-transform: uppercase;
+   color: #fff;
+}
+
+.premium h1 {
+margin-top: 310px;
+color: #ff3d00;
+font-weight: 700;
+font-size: 2.5em;
+margin-bottom: 0;
+}
+
+.premium h3 {
+   color: #fff;
+   margin-top: 0;
+}
+
+.premium .eo {
+   color: #fff;
+   text-align: right;
+   padding-right: 60px;
+   padding-top: 150px;
+}
+
+h3.eo {
+   font-size: 0.8em;
+}
+
+h3.block-title {
+    color: #000;
+    text-transform: capitalize;
+    margin-top: 1.4em;
+}
+
+h5.block-title {
+    color: #000;
+    text-transform: capitalize;
+}
+
+.curated {
+ background: #fff;
+ min-height: 500px;
+ width: 100%;
+}
+
+.input {
+    text-transform: lowercase;
+}
+
+.cta { height: 250px; }
+
+.mdl-card__media > img {
+  max-height: 345px;
+}
+
+.smallcard__media > img {
+  max-height: 250px;
+}
+
+.event {
+   max-width: 1150px;
+   text-transform: capitalize;
+   text-align: left;
+}
+
+.black {
+   color: #000;
+}
+
+.kartu {
+   background: #fff none repeat scroll 0 0;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.center {
+  text-align: center;
+  color: #ff3d00;
+}
+
+.footer {
+  background: #efebe8;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.bawah {
+  max-width: 1150px;
+}
+
+.list-nav {
+    color: rgba(0, 0, 0, 0.87);
+    cursor: default;
+    flex-flow: row nowrap;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    min-height: 24px;
+    overflow: hidden;
+}
+
+.grey-head {
+height: 155px;
+background: #666666;
+}
+
+.small_card {
+  font-size: 14px;
+}
+
+.main_card {
+  font-size: 18px;
+}
+
+.isi {
+   margin-top: 650px;
+   color: #393939;
+}
+
+.detil-isi {
+   max-width: 1190px;
+   margin: 0 auto;
+   color: #393939;
+}
+
+.detil-isi h3 {
+   color: #393939;
+}
+
+.detil-isi p, .detil-kanan p  {
+text-transform: none;
+margin-bottom: 0;
+}
+
