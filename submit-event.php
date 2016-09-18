@@ -66,13 +66,13 @@
           </div>
           <div class="mdl-cell mdl-cell--4-col">
 
-<a class="mdl-button mdl-js-button mdl-button--accent">
+<a class="mdl-button mdl-js-button mdl-button--accent" onclick="document.getElementById('simpan').click()">
   Simpan
 </a>
-<a class="mdl-button mdl-js-button mdl-button--accent">
+<a class="mdl-button mdl-js-button mdl-button--accent" onclick="document.getElementById('pratinjau').click()">
   Pratinjau
 </a>
-<a class="mdl-button mdl-js-button mdl-button--accent">
+<a class="mdl-button mdl-js-button mdl-button--accent" onclick="document.getElementById('submit').click()">
   Submit
 </a>
 
@@ -84,7 +84,7 @@
             <h4 class="mdl-typography--font-bold">Rincian Acara</h3>
           </div>
 
-      <form action="#" class="mdl-cell mdl-cell--12-col">
+      <form action="test.php" class="mdl-cell mdl-cell--12-col" method="post" enctype="multipart/form-data">
 
       <div style="float:left;" class="mdl-cell mdl-cell--5-col">
       <label for="event_category">Jenis acara</label><br>
@@ -116,8 +116,6 @@
           <label for="event_detail_address">Alamat</label><br>
           <input type="text" id="event_detail_address" name="event_detail_address">
       </div>
-
-
 
       <div style="float:left;" class="mdl-cell mdl-cell--5-col">
       <label for="event_city">Kota / Kabupaten</label><br>
@@ -158,15 +156,14 @@
       <div class="fileUpload">
       <span class="custom-span">+</span>
       <p class="custom-para">Add Images</p>
-      <input id="uploadBtn" type="file" class="upload" name="event_image" />
+      <input id="uploadBtn" name="file" type="file" class="upload" />
       </div>
-      <input id="uploadFile" placeholder="0 files selected" disabled="disabled" />
+      <input id="uploadFile" placeholder="no file selected" disabled="disabled" />
       <p>Ukuran minimal: 1200 x 800 pixel</p>
-
 
       <script type="text/javascript">
       document.getElementById("uploadBtn").onchange = function () {
-      document.getElementById("uploadFile").value = this.value;
+      document.getElementById("uploadFile").value = document.getElementById("uploadBtn").value;
       };
       </script>
 
@@ -228,15 +225,15 @@
 
       <div style="margin-top: 70px;clear:left;" class="mdl-cell mdl-cell--5-col">
 
-         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+         <button id="simpan" value="simpan" name="simpan" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Simpan
-      </a>
-      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      </button>
+      <button id="pratinjau" value="pratinjau" name="pratinjau" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Pratinjau
-      </a>
-      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      </button>
+      <button id="submit" value="submit" name="submit" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Submit
-      </a>
+      </button>
       </form>
 </div>
    
