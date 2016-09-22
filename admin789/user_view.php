@@ -33,11 +33,19 @@
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
-						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li><a href="#fakelink">User</a></li>
-						<li class="active">User List</li>
+						<li><a href="index.html"><i class="fa fa-home"></i></a></li>						
+						<li class="active">User</li>
 					</ol>
 					<!-- End breadcrumb -->
+
+					<div class="row" style="padding-bottom:5px;">
+						<div class="col-md-6">
+							<button type="button" class="btn btn-info" onclick="location.href='user_input.php'"><i class="fa fa fa-plus"></i> Input User</button>
+						</div>
+						
+						<div class="col-md-6">							
+						</div>
+					</div>	
 					
 					<!-- BEGIN DATA TABLE -->
 					<div class="the-box">

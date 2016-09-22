@@ -13,7 +13,7 @@ if ($action=='hapus')
 {
 	$id=$_GET['id'];	
 
-	$hesa->delete_file('team_image','team',"../assets/img/team",'team_id',$id);
+	$hesa->delete_file('team_image','team',"../images/team",'team_id',$id);
 
 	$memberDelSelect = mysql_query("DELETE FROM team WHERE team_id = '$id'");
 	
@@ -39,9 +39,9 @@ elseif ($action=='edit')
 
 	if ($nama_foto <> '')
 		{
-			$hesa->delete_file('team_image','team',"../assets/img/team",'team_id',$id);
+			$hesa->delete_file('team_image','team',"../images/team",'team_id',$id);
 
-			$hesa->upload_file("../assets/img/team",'team_image');
+			$hesa->upload_file("../images/team",'team_image');
 
 			mysql_query("UPDATE team SET team_image = '$nama_final' WHERE team_id = '$id' ");
 
@@ -56,7 +56,7 @@ elseif ($action=='edit')
 elseif ($action=='input')
 {
 
-$hesa->upload_file("../assets/img/team",'team_image');
+$hesa->upload_file("../images/team",'team_image');
 
 
  mysql_query("INSERT INTO team VALUES (NULL, 										

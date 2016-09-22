@@ -3,9 +3,8 @@
 	include('config/Html_library.php');
 	session_start();
 	$html = new Html_library;
-	$html->display_main('Edit Layout');
+	$html->display_main('Edit Premum Content');
 ?>
-
 		<!--
 		===========================================================
 		BEGIN PAGE
@@ -28,13 +27,14 @@
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Event Layout</h1>
+					<h1 class="page-heading">Premium Content</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li class="active">Event Layout</li>
+						<li><a href="event_layout.php">Premium COntent</a></li>
+						<li class="active">Premium Content</li>
 					</ol>
 					<!-- End breadcrumb -->
 					
@@ -47,22 +47,20 @@
 						<form id="eventform" method="post" action="event_layout_action.php?action=edit&id=<?php echo $layout['event_layout_id'] ?>" class="form-horizontal" enctype="multipart/form-data" >
 						
 							<fieldset>
-								<legend>Pilih Event untuk Layout Event Urutan ke  <?php echo $layout['event_layout_urutan'] ?> </legend>
+								<legend>Pilih Event untuk Premium Content Urutan ke  <?php echo $layout['event_layout_urutan'] ?> </legend>
 
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Pilih Event <p> (hanya yang sudah di approved) </p></label>
 									<div class="col-lg-5">
 										<select name="event_layout_event_id">
 										
-										<?php 	$event = mysql_fetch_assoc(mysql_query("SELECT event_title, event_id FROM event WHERE event_id = '$layout[event_layout_event_id]' "));  ?>
-											<option value="<?php echo $event['event_id'] ?>"><?php echo $event['event_title'] ?></option>
-										
+																				
 										<?php 	
 											
-											$event_query = mysql_query("SELECT event_title, event_id FROM event ");  
+											$event_query = mysql_query("SELECT event_title, event_id FROM event WHERE event_start_date >= '$now' AND event_status = 'DISETUJUI' ORDER BY event_title  ");  
 										
 										while ( $event_loop = mysql_fetch_assoc($event_query) ) { ?>
-											<option value="<?php echo $event_loop['event_id'] ?>"><?php echo $event_loop['event_title'] ?></option>
+											<option value="<?php echo $event_loop['event_id'] ?>" <?php echo $layout['event_layout_event_id']==$event_loop['event_id']?'selected':'' ?> ><?php echo $event_loop['event_title'] ?></option>
 										<?php
 										}?>
 
@@ -74,7 +72,7 @@
 
 							<div class="form-group">
 								<div class="col-lg-9 col-lg-offset-3">
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<button type="submit" class="btn btn-primary">Pilih</button>
 								</div>
 							</div>
 						</form>

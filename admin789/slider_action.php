@@ -13,7 +13,7 @@ if ($action=='hapus')
 {
 	$id=$_GET['id'];	
 
-	$hesa->delete_file('slider_image','slider',"../assets/img/slider",'slider_id',$id);
+	$hesa->delete_file('slider_image','slider',"../images/slider",'slider_id',$id);
 
 	$memberDelSelect = mysql_query("DELETE FROM slider WHERE slider_id = '$id'");
 	
@@ -40,9 +40,9 @@ elseif ($action=='edit')
 
 	if ($nama_foto <> '')
 		{
-			$hesa->delete_file('slider_image','slider',"../assets/img/slider",'slider_id',$id);
+			$hesa->delete_file('slider_image','slider',"../images/slider",'slider_id',$id);
 
-			$hesa->upload_file("../assets/img/slider",'slider_image');
+			$hesa->upload_file("../images/slider",'slider_image');
 
 			mysql_query("UPDATE slider SET slider_image = '$nama_final' WHERE slider_id = '$id' ");
 
@@ -57,7 +57,7 @@ elseif ($action=='edit')
 elseif ($action=='input')
 {
 
-$hesa->upload_file("../assets/img/slider",'slider_image');
+$hesa->upload_file("../images/slider",'slider_image');
 
 
  mysql_query("INSERT INTO slider VALUES (NULL,

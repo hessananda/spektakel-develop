@@ -3,8 +3,16 @@
 	include('config/Html_library.php');
 	session_start();
 	$html = new Html_library;
-	$html->display_main('Event List');
+	$html->display_main('Event');
 ?>
+
+<style type="text/css">
+	.cover {
+		  object-fit: cover;
+		  width: 150px;
+		  height: 150px;
+		}
+</style>
 		<!--
 		===========================================================
 		BEGIN PAGE
@@ -26,15 +34,31 @@
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Event</h1>
+					<h1 class="page-heading">Kegiatan</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li><a href="#fakelink">Event</a></li>
+						<li class="active" >Kegiatan</li>					
 					</ol>
 					<!-- End breadcrumb -->
+
+					<div class="row" style="padding-bottom:5px;">
+						<div class="col-md-6">
+
+						<button type="button" class="btn btn-info" onclick="location.href='event_input.php'"><i class="fa fa fa-plus"></i> Input Kegiatan</button>
+		
+						</div>
+						
+						<div class="col-md-6">
+
+							<div class="pull-right">
+								<button type="button" class="btn btn-success" onclick="location.href='event_view.php'"><i class="fa fa fa-th"></i></button>
+								<button type="button" class="btn btn-success" onclick="location.href='event_view_list.php'"><i class="fa fa-list"></i></button>
+							</div>
+						</div>
+					</div>					
 					
 					
 					<!-- BEGIN FORM WIZARD -->
@@ -46,7 +70,9 @@
 							<li><a href="#wizard-1-step3" data-toggle="tab"><i class="fa fa-check"></i>&nbsp;DISETUJUI</a></li>
 							<li><a href="#wizard-1-step4" data-toggle="tab"><i class="glyphicon glyphicon-remove-circle"></i>&nbsp; DITOLAK</a></li>
 							<li><a href="#wizard-1-step7" data-toggle="tab"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;All</a></li>
+							
 						</ul>
+						
 					  </div>
 						<div id="panel-collapse-1" class="collapse in">
 							<div class="tab-content">
@@ -56,20 +82,29 @@
 										<div class="row">
 												
 										<?php
+											$syarat = '';
+											$syarat_all = '';
+											if ($_SESSION['user_type']=='kontributor') {
+												$syarat = "AND id_user_yang_input = '".$_SESSION['user_id']."' ";
+												$syarat_all = "WHERE id_user_yang_input = '".$_SESSION['user_id']."' ";
+											}
 
-											$events = mysql_query("SELECT * FROM event WHERE event_status = 'BELUM DIREVIEW' ");
+
+
+
+											$events = mysql_query("SELECT * FROM event WHERE event_status = 'BELUM DIREVIEW' ".$syarat." ORDER BY event_id DESC ");
 											 
 											 while ($event = mysql_fetch_assoc($events)) { 
 											?>
 												<div class="col-sm-4">
 													<!-- BEGIN PROPERTY CARD -->
-													<div class="the-box full no-border property-card">
-														<img src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
-														<div class="the-box no-margin no-border bg-default">
+													<div class="the-box full property-card">
+														<img class="cover"  src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
+														<div class="the-box no-margin bg-default">
 															<div class="row">
 																<div class="col-xs-12">
-																	<h1><?php echo $event['event_title'] ?></h1>
-																	<p><?php echo $event['event_description'] ?></p>
+																	<h4 style="color:#808080;font-weight: bold;"><?php echo substr($event['event_title'],0,30); echo strlen($event['event_title'])>30?"...":'' ?></h4>
+																	
 
 																</div><!-- /.col-xs-12 -->
 																
@@ -110,19 +145,19 @@
 													
 										<?php
 
-											$events = mysql_query("SELECT * FROM event WHERE event_status = 'DITINJAU' ORDER BY event_edited_time DESC ");
+											$events = mysql_query("SELECT * FROM event WHERE event_status = 'DITINJAU' ".$syarat."  ORDER BY event_edited_time DESC ");
 											 
 											 while ($event = mysql_fetch_assoc($events)) { 
 											?>
 												<div class="col-sm-4">
 													<!-- BEGIN PROPERTY CARD -->
-													<div class="the-box full no-border property-card">
-														<img src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
+													<div class="the-box full property-card">
+														<img class="cover" src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
 														<div class="the-box no-margin no-border bg-default">
 															<div class="row">
 																<div class="col-xs-12">
-																	<h1><?php echo $event['event_title'] ?></h1>
-																	<p><?php echo $event['event_description'] ?></p>
+																	<h4 style="color:#808080;font-weight: bold;"><?php echo substr($event['event_title'],0,30); echo strlen($event['event_title'])>30?"...":'' ?></h4>
+																	
 
 																</div><!-- /.col-xs-12 -->
 																
@@ -163,19 +198,19 @@
 													
 										<?php
 
-											$events = mysql_query("SELECT * FROM event WHERE event_status = 'DISETUJUI' ORDER BY event_edited_time DESC  ");
+											$events = mysql_query("SELECT * FROM event WHERE event_status = 'DISETUJUI' ".$syarat." ORDER BY event_edited_time DESC  ");
 											 
 											 while ($event = mysql_fetch_assoc($events)) { 
 											?>
 												<div class="col-sm-4">
 													<!-- BEGIN PROPERTY CARD -->
-													<div class="the-box full no-border property-card">
-														<img src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
-														<div class="the-box no-margin no-border bg-default">
+													<div class="the-box full property-card">
+														<img class="cover" src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
+														<div class="the-box no-margin bg-default">
 															<div class="row">
 																<div class="col-xs-12">
-																	<h1><?php echo $event['event_title'] ?></h1>
-																	<p><?php echo $event['event_description'] ?></p>
+																	<h4 style="color:#808080;font-weight: bold;"><?php echo substr($event['event_title'],0,30); echo strlen($event['event_title'])>30?"...":'' ?></h4>
+																	
 
 																</div><!-- /.col-xs-12 -->
 																
@@ -218,20 +253,19 @@
 													
 										<?php
 
-											$events = mysql_query("SELECT * FROM event WHERE event_status = 'DITOLAK' ORDER BY event_edited_time DESC  ");
+											$events = mysql_query("SELECT * FROM event WHERE event_status = 'DITOLAK' ".$syarat." ORDER BY event_edited_time DESC  ");
 											 
 											 while ($event = mysql_fetch_assoc($events)) { 
 											?>
 												<div class="col-sm-4">
 													<!-- BEGIN PROPERTY CARD -->
-													<div class="the-box full no-border property-card">
-														<img src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
+													<div class="the-box full property-card">
+														<img class="cover" src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
 														<div class="the-box no-margin no-border bg-default">
 															<div class="row">
 																<div class="col-xs-12">
-																	<h1><?php echo $event['event_title'] ?></h1>
-																	<p><?php echo $event['event_description'] ?></p>
-
+																	<h4 style="color:#808080;font-weight: bold;"><?php echo substr($event['event_title'],0,30); echo strlen($event['event_title'])>30?"...":'' ?></h4>
+																	
 																</div><!-- /.col-xs-12 -->
 																
 															</div><!-- /.row -->
@@ -281,14 +315,13 @@
 											?>
 												<div class="col-sm-4">
 													<!-- BEGIN PROPERTY CARD -->
-													<div class="the-box full no-border property-card">
-														<img src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
+													<div class="the-box full property-card">
+														<img class="cover" src="../images/events/<?php echo $event['event_image'] ?>" alt="Image">
 														<div class="the-box no-margin no-border bg-default">
 															<div class="row">
 																<div class="col-xs-12">
-																	<h1><?php echo $event['event_title'] ?></h1>
-																	<p><?php echo $event['event_description'] ?></p>
-
+																	<h4 style="color:#808080;font-weight: bold;"><?php echo substr($event['event_title'],0,30); echo strlen($event['event_title'])>30?"...":'' ?></h4>
+																	
 																</div><!-- /.col-xs-12 -->
 																
 															</div><!-- /.row -->

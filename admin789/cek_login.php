@@ -20,11 +20,13 @@ if ($ketemu > 0){
 
 }
 else{
+?>
+	<script>
+		alert('Username atau password tidak tepat');
+		location.href = 'index.php';
+	</script>
 
-  echo "duh, salah password nih";
-  echo "<br>";
-  echo "<a href='index.php' >balik lagi</a>";
-
+<?php
 }
 
 ?>

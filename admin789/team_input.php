@@ -3,7 +3,7 @@
 	include('config/Html_library.php');
 	session_start();
 	$html = new Html_library;
-	$html->display_main('Input an Team');
+	$html->display_main('Input Team');
 ?>
      <script>
       function countChar(val) {
@@ -39,8 +39,7 @@
 			<!-- BEGIN SIDEBAR LEFT -->
 			<?php include "sidebar_left.php" ?>
 			<!-- END SIDEBAR LEFT -->
-			
-									
+												
 			<!-- BEGIN PAGE CONTENT -->
 			<div class="page-content">
 				
@@ -53,7 +52,8 @@
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<!-- <li class="active">Lihat Acara / View Event</li> -->
+						<li><a href="team_view.php">Team</a></li>
+						<li class="active">Tambah Team</li>
 					</ol>
 					<!-- End breadcrumb -->
 					

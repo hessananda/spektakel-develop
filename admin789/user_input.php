@@ -4,7 +4,7 @@
 	include('config/Html_library.php');
 	session_start();
 	$html = new Html_library;
-	$html->display_main('Input an user');
+	$html->display_main('Input User');
 ?>
      <script>
       function countChar(val) {
@@ -54,7 +54,8 @@
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<!-- <li class="active">Lihat Acara / View Event</li> -->
+						<li><a href="user_view.php">User</a></li>
+						<li class="active">Input User</li>
 					</ol>
 					<!-- End breadcrumb -->
 					

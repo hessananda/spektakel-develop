@@ -34,7 +34,8 @@
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li class="active">Lihat User / View User</li>
+						<li><a href="user_view.php">User</li>
+						<li class="active">Edit User</li>
 					</ol>
 					<!-- End breadcrumb -->
 					<?php
@@ -121,7 +122,7 @@
 
 							<div class="form-group">
 								<div class="col-lg-9 col-lg-offset-3">
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<button type="submit" class="btn btn-primary">Simpan</button>
 								</div>
 							</div>
 						</form>

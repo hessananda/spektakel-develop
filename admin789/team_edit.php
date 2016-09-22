@@ -4,7 +4,7 @@
 	include('config/Html_library.php');
 	session_start();
 	$html = new Html_library;
-	$html->display_main('Edit an Event');
+	$html->display_main('Edit Team');
 ?>
 
 <script>
@@ -45,8 +45,7 @@
 											
 			<!-- BEGIN PAGE CONTENT -->
 			<div class="page-content">
-				
-				
+								
 				<div class="container-fluid">
 					<!-- Begin page heading -->
 					<h1 class="page-heading">Team</h1>
@@ -55,7 +54,8 @@
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li class="active">Lihat Event / View Event</li>
+						<li><a href="team_view.php">Team</a></li>
+						<li class="active">Edit Team</li>
 					</ol>
 					<!-- End breadcrumb -->
 					<?php
@@ -80,7 +80,7 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Gambar Lama / Old Image</label>
 									<div class="col-lg-5">
-										<img width="50%" height="50%" src="../assets/img/team/<?php echo $slide['team_image'] ?>">
+										<img width="50%" height="50%" src="../images/team/<?php echo $slide['team_image'] ?>">
 									</div>
 								</div>
 
@@ -115,7 +115,7 @@
 
 							<div class="form-group">
 								<div class="col-lg-9 col-lg-offset-3">
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<button type="submit" class="btn btn-primary">Simpan</button>
 								</div>
 							</div>
 						</form>

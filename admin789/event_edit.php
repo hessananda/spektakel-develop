@@ -43,21 +43,20 @@
 			<!-- BEGIN SIDEBAR LEFT -->
 			<?php include "sidebar_left.php" ?>
 			<!-- END SIDEBAR LEFT -->
-			
 									
 			<!-- BEGIN PAGE CONTENT -->
 			<div class="page-content">
-				
-				
+								
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Event</h1>
+					<h1 class="page-heading">Kegiatan</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li class="active">Lihat Event / View Event</li>
+						<li><a href="event_view.php">Kegiatan</a></li>
+						<li class="active">Edit Kegiatan</li>
 					</ol>
 					<!-- End breadcrumb -->
 					<?php
@@ -70,7 +69,7 @@
 						<form id="eventform" method="post" action="event_action.php?action=edit&id=<?php echo $id ?>" class="form-horizontal" enctype="multipart/form-data" >
 							
 							<fieldset>
-								<legend>Ubah Event / Edit Event</legend>
+								<legend>Ubah Kegiatan / Edit Event</legend>
 
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Judul Event / Event Name</label>
@@ -229,14 +228,16 @@
 									<div id="charNum"></div>
 									</div>
 								</div>
-
+<!-- 
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Deskripsi / Description (English)</label>
 									<div class="col-lg-5">
-										<textarea id="field" onkeyup="countChar1(this)" name="event_description_english" rows="5" maxlength="500" class="form-control no-resize"><?php echo $event['event_description_english'] ?></textarea>
+										<textarea id="field" onkeyup="countChar1(this)" name="event_description_english" rows="5" maxlength="500" class="form-control no-resize"><?php// echo $event['event_description_english'] ?></textarea>
 										<div id="charNum1"></div>
 									</div>
-								</div>
+								</div> -->
+
+								<input type="hidden" name="event_description_english" value="">
 
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Informasi Tambahan / More Information</label>
@@ -402,11 +403,12 @@
 
 							<hr>
 							<legend>Status Acara / Event Status</legend>
+
 							<div class="form-group">
-								<!-- <label class="col-lg-3 control-label">Alamat panitia acara / Event Organizer Address</label> -->
+								
 								<div class="col-lg-5">
 
-									<select name="event_status" class="form-control" tabindex="2">
+									<select <?php echo $_SESSION['user_type']=='kontributor'?'disabled':'' ?> name="event_status" class="form-control" tabindex="2">
 											<option value="<?php echo $event['event_status'] ?>"><?php echo $event['event_status'] ?></option>
 											<option value="DITINJAU">DITINJAU</option>
 											<option value="DISETUJUI">DISETUJUI</option>
@@ -417,7 +419,7 @@
 
 							<div class="form-group">
 								<div class="col-lg-9 col-lg-offset-3">
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<button type="submit" class="btn btn-primary">Simpan</button>
 								</div>
 							</div>
 						</form>

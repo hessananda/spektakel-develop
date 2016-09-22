@@ -4,7 +4,7 @@
 	include('config/Html_library.php');
 	session_start();
 	$html = new Html_library;
-	$html->display_main('Edit an Event');
+	$html->display_main('Edit an Slider');
 ?>
 
 <script>
@@ -51,13 +51,15 @@
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Slider <small>Sub heading here</small></h1>
+					<h1 class="page-heading">Slider</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li class="active">Lihat Event / View Event</li>
+						<li><a href="slider_view.php">Slide</a></li>
+						<li class="active">Edit Slide</li>
+
 					</ol>
 					<!-- End breadcrumb -->
 					<?php
@@ -83,7 +85,7 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Gambar Lama / Old Image</label>
 									<div class="col-lg-5">
-										<img width="50%" height="50%" src="../assets/img/slider/<?php echo $slide['slider_image'] ?>">
+										<img width="50%" height="50%" src="../images/slider/<?php echo $slide['slider_image'] ?>">
 									</div>
 								</div>
 
@@ -126,7 +128,7 @@
 
 							<div class="form-group">
 								<div class="col-lg-9 col-lg-offset-3">
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<button type="submit" class="btn btn-primary">Simpan</button>
 								</div>
 							</div>
 						</form>

@@ -29,13 +29,13 @@
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Layout Event</h1>
+					<h1 class="page-heading">Premium Content</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li><a href="#fakelink">Layout Event</a></li>
+						<li class="active">Premium Content</li>
 					</ol>
 					<!-- End breadcrumb -->
 					
@@ -43,7 +43,7 @@
 						<div class="col-lg-6">
 							<div align="center">
 								<img width="100%" height="100%" src="event_layout.png" >
-								<!-- <iframe src="http://www.spektakel.id/dev1" height="600" width="100%"></iframe> -->
+								
 								 
 							</div>
 						</div>

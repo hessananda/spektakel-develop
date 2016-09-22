@@ -18,9 +18,9 @@ if ($action=='edit_account')
 			 ".$master."_fullname = '$_POST[fullname]'
 			 WHERE ".$master.'_id'." = '$id'";
 
-	mysqli_query($con,$query);
+	mysql_query($query);
 
-	echo mysqli_error($con);
+	echo mysql_error();
 
 	if ($_FILES['file']['name'] <> '')
 		{
@@ -39,9 +39,9 @@ elseif ($action=='edit_password')
 			 ".$master."_password = '".md5($_POST['pass2'])."'
 			 WHERE ".$master.'_id'." = '$id'";
 
-	mysqli_query($con,$query);
+	mysql_query($query);
 
-	echo mysqli_error($con);
+	echo mysql_error();
 	header("location:".$master."_change_password.php");
 }
 else

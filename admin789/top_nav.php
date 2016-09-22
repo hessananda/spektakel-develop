@@ -2,8 +2,8 @@
 				<div class="top-navbar-inner">
 					
 					<!-- Begin Logo brand -->
-					<div class="logo-brand">
-                           <img width="100%" height="100%" src="images/logos.jpg" alt="logo">
+					<div class="logo-brand" style="padding-top:15px;padding-right:60px;">
+                           <img src="images/Spektakel.png" alt="Spektakel.id">
 					</div><!-- /.logo-brand -->
 					<!-- End Logo brand -->
 					

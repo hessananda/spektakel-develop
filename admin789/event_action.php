@@ -13,7 +13,7 @@ if ($action=='hapus')
 {
 	$id=$_GET['id'];	
 
-	$hesa->delete_file('event_image','event',"../images/events/$sqlfetch[event_image]",'event_id',$id);
+	$hesa->delete_file('event_image','event',"../images/events",'event_id',$id);
 
 	$memberDelSelect = mysql_query("DELETE FROM event WHERE event_id = '$id'");
 	
@@ -46,7 +46,8 @@ elseif ($action=='edit')
 					   event_more_info = '$_POST[event_more_info]',
 					   event_type = '$_POST[event_type]',
 					   event_status = '$_POST[event_status]',
-					   event_edited_by = '$_SESSION[user_id]',
+					   id_user_yang_edit = '$_SESSION[user_id]',
+					   event_edited_by = '$_SESSION[user_type]',
 					   event_edited_time = '$now'
 					   WHERE event_id = '$id'";
 
@@ -70,7 +71,7 @@ elseif ($action=='edit')
 	if ($nama_foto <> '')
 		{
 
-			$hesa->delete_file('event_image','event',"../images/events/$sqlfetch[event_image]",'event_id',$id);
+			$hesa->delete_file('event_image','event',"../images/events",'event_id',$id);
 
 			$hesa->upload_file("../images/events",'event_image');
 
@@ -85,7 +86,8 @@ elseif ($action=='edit')
 elseif ($action=='update')
 {
 mysql_query("UPDATE event SET event_status = '$_POST[event_status]',
-	 		 event_edited_by = '$_SESSION[user_id]',
+	 		 event_edited_by = '$_SESSION[user_type]',
+	 		 id_user_yang_edit = '$_SESSION[user_id]',
 			 event_edited_time = '$now'
 			 WHERE event_id = '$_GET[id]' ");
 
@@ -152,8 +154,24 @@ $event_finish_time = $_POST['event_finish_time_hour'].':'.$_POST['event_finish_t
  
 echo mysql_error();
 ?>
-<!--meta http-equiv="refresh" content="0; url=event_view.php" /-->
+<meta http-equiv="refresh" content="0; url=event_view.php" />
 <?php
+
+}
+
+elseif ($action=='delete_checked'){
+
+	if(isset($_POST['check'])){
+	
+		foreach ($_POST['check'] as $id) {
+			
+			$hesa->delete_file('event_image','event',"../images/events",'event_id',$id);
+			$memberDelSelect = mysql_query("DELETE FROM event WHERE event_id = '$id'");
+		
+		}	
+	
+	}
+	
 
 }
 

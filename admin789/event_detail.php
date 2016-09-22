@@ -34,22 +34,22 @@
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Event detail</h1>
+					<h1 class="page-heading">Detail Kegiatan</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li><a href="#fakelink">Event</a></li>
-						<li class="active">Event detail</li>
+						<li><a href="event_view.php">Kegiatan</a></li>
+						<li class="active">Detail Kegiatan</li>
 					</ol>
 					<!-- End breadcrumb -->
 					
 					<?php
+					
 						$id = $_GET['id'];
 						$event = mysql_fetch_assoc(mysql_query("SELECT * FROM event e WHERE event_id = '$id' ")); 
 						$user = mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE user_id = '$event[id_user_yang_input]' ")); 
-
 					?>
 					
 					<div class="the-box no-border">
@@ -141,11 +141,11 @@
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $event['event_link'] ; ?></td>
 												</tr>
-												<tr>
+												<!-- <tr>
 													<td>Tautan Google Maps / Google Maps Link</td>
 													<td>&nbsp&nbsp:</td>
-													<td><?php echo $event['event_gmap_link'] ; ?></td>
-												</tr>
+													<td><?php //echo $event['event_gmap_link'] ; ?></td>
+												</tr> -->
 												<tr>
 													<td>Kategori Event / Event Category</td>
 													<td>&nbsp&nbsp:</td>
@@ -216,14 +216,14 @@
 								<div class="row">
 									<div class="col-sm-3 col-xs-6">
 									<form action="event_action.php?action=update&id=<?php echo $id ?>" method="POST" >
-										<select name="event_status">
+										<select <?php echo $_SESSION['user_type']=='kontributor'?'disabled':'' ?> name="event_status">
 											<option value="DITINJAU">DITINJAU</option>
 											<option value="DISETUJUI">DISETUJUI</option>
 											<option value="DITOLAK">DITOLAK</option>	
 										</select>
 									</div><!-- /.col-xs-6 -->
 										<div class="col-sm-9 col-xs-6">
-											<button class="btn btn-success">Simpan Perubahan/Save Change</button>
+											<button <?php echo $_SESSION['user_type']=='kontributor'?'style="display:none;" ':'' ?> class="btn btn-success">Simpan Perubahan/Save Change</button>
 											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 											<a href="event_edit.php?id=<?php echo $id ?>" class="btn btn-warning">Edit</a>
 										</div><!-- /.col-xs-6 -->

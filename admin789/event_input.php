@@ -49,13 +49,14 @@
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Event</h1>
+					<h1 class="page-heading">Kegiatan</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li class="active">Lihat Acara / View Event</li>
+						<li><a href="event_view.php">Kegiatan</a></li>
+						<li class="active">Input Kegiatan</li>
 					</ol>
 					<!-- End breadcrumb -->
 					
@@ -63,10 +64,10 @@
 						<form id="eventform" method="post" action="event_action.php?action=input" class="form-horizontal" enctype="multipart/form-data" >
 						
 							<fieldset>
-								<legend>Acara Baru / New Event</legend>
+								<legend>Kegiatan Baru / New Event</legend>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Judul Acara / Event Name</label>
+									<label class="col-lg-3 control-label">Judul Kegiatan / Event Name</label>
 									<div class="col-lg-5">
 										<input type="text" class="form-control" name="event_title" />
 									</div>
@@ -170,14 +171,14 @@
 								</div>
 								
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tempat Acara / Event Location</label>
+									<label class="col-lg-3 control-label">Tempat Kegiatan / Event Location</label>
 									<div class="col-lg-5">
 									<input type="text" class="form-control" name="event_location" placeholder="eg. #Lapangan Desa Cindaga" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Alamat Detail Acara / Event Detail Address</label>
+									<label class="col-lg-3 control-label">Alamat Detail Kegiatan / Event Detail Address</label>
 									<div class="col-lg-5">
 										<textarea name="event_detail_address" class="form-control no-resize"></textarea>
 									</div>
@@ -191,13 +192,15 @@
 									</div>
 								</div>
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label class="col-lg-3 control-label">Deskripsi / Description (English)</label>
 									<div class="col-lg-5">
 										<textarea id="field" onkeyup="countChar1(this)" name="event_description_english" rows="5" maxlength="500" class="form-control no-resize"></textarea>
 										<div id="charNum1"></div>
 									</div>
-								</div>
+								</div> -->
+
+								<input type="hidden" name="event_description_english" value="">
 
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Informasi tambahan / More Information</label>
@@ -207,7 +210,7 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tautan acara (jika ada) / Event link (if any)</label>
+									<label class="col-lg-3 control-label">Tautan Kegiatan (jika ada) / Event link (if any)</label>
 									<div class="col-lg-5">
 										<input type="text" class="form-control" name="event_link" placeholder="http://" />
 									</div>
@@ -221,14 +224,14 @@
 								</div>
 								
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kategori Acara / Event Category</label>
+									<label class="col-lg-3 control-label">Kategori Kegiatan / Event Category</label>
 									<div class="col-lg-5">
 									<input type="text" class="form-control" name="event_category" placeholder="eg. #orjentunggal, #tari, #musik, #theater, #senitradisi ..." />
 									</div>
 								</div>
 
 								<div class="form-group">
-										<label class="col-lg-3 control-label">Jenis Acara / Event Type</label>
+										<label class="col-lg-3 control-label">Jenis Kegiatan / Event Type</label>
 										<div class="col-lg-5">
 											<div class="radio">
 												<label>
@@ -266,10 +269,10 @@
 
 							<hr>
 
-							<legend>Panitia Acara / Event Organizer</legend>
+							<legend>Panitia Kegiatan / Event Organizer</legend>
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Nama panitia acara / Event Organizer Name</label>
+								<label class="col-lg-3 control-label">Nama panitia Kegiatan / Event Organizer Name</label>
 								<div class="col-lg-5">
 									<input type="text" class="form-control" name="eo_name" />
 								</div>
@@ -291,7 +294,7 @@
 
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Alamat panitia acara / Event Organizer Address</label>
+								<label class="col-lg-3 control-label">Alamat panitia Kegiatan / Event Organizer Address</label>
 								<div class="col-lg-5">
 									<input type="text" class="form-control" name="eo_address" />
 								</div>

@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set("Asia/Jakarta");
 
-$server = "localhost";
+$server = "localhost:3307";
 $username = "root";
 $password = "";
 $database = "spektake_spekspekspek";

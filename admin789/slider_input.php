@@ -3,7 +3,7 @@
 	include('config/Html_library.php');
 	session_start();
 	$html = new Html_library;
-	$html->display_main('Input an Event');
+	$html->display_main('Input an Slider');
 ?>
      <script>
       function countChar(val) {
@@ -47,13 +47,14 @@
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Slider</h1>
+					<h1 class="page-heading">Slide</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<!-- <li class="active">Lihat Acara / View Event</li> -->
+						<li><a href="slider_view.php">Slide</a></li>
+						<li class="active">Input Slide</li>
 					</ol>
 					<!-- End breadcrumb -->
 					

@@ -4,7 +4,7 @@
 	include('config/Html_library.php');
 	session_start();
 	$html = new Html_library;
-	$html->display_main('Event List');
+	$html->display_main('Team');
 
 ?>
 		<!--
@@ -23,8 +23,7 @@
 			
 			
 			<!-- BEGIN PAGE CONTENT -->
-			<div class="page-content">
-				
+			<div class="page-content">				
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
@@ -34,9 +33,18 @@
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li><a href="#fakelink">Slider</a></li>
+						<li class="active">Team</li>
 					</ol>
 					<!-- End breadcrumb -->
+
+					<div class="row" style="padding-bottom:5px;">
+						<div class="col-md-6">
+							<button type="button" class="btn btn-info" onclick="location.href='team_input.php'"><i class="fa fa fa-plus"></i> Input Team</button>
+						</div>
+						
+						<div class="col-md-6">							
+						</div>
+					</div>	
 					
 
 					<!-- BEGIN DATA TABLE -->

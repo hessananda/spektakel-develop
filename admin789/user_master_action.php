@@ -18,7 +18,7 @@ if ($action=='hapus')
 	$memberDelSelect = mysql_query("DELETE FROM user WHERE user_id = '$id'");
 	
 	echo mysql_error();
-	// header('location:user_view.php');
+	header('location:user_view.php');
 				
 }
 
