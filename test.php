@@ -19,5 +19,4 @@ elseif ($button=='simpan') {
 	echo $button;
 }
 
-
 ?>

@@ -64,7 +64,6 @@
 						$event = mysql_fetch_assoc(mysql_query("SELECT * FROM event WHERE event_id = '$id' ")); 
 					?>
 
-
 					<div class="the-box">
 						<form id="eventform" method="post" action="event_action.php?action=edit&id=<?php echo $id ?>" class="form-horizontal" enctype="multipart/form-data" >
 							
@@ -259,11 +258,27 @@
 										<input type="text" class="form-control" value="<?php echo $event['event_gmap_link'] ; ?>" name="event_gmap_link" placeholder="http://" />
 									</div>
 								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Kategori Kegiatan / Event Category</label>
+									<div class="col-lg-5">
+									<select name="event_category">
+										<option <?php echo $event['event_category']=='' OR $event['event_category']=='0' ?'selected':'' ; ?> value="Budaya">Kategori Kegiatan</option>
+										<option <?php echo $event['event_category']=='Budaya'?'selected':'' ; ?> value="Budaya">Budaya</option>
+										<option <?php echo $event['event_category']=='Festival'?'selected':'' ; ?> value="Festival">Festival</option>
+										<option <?php echo $event['event_category']=='Film'?'selected':'' ; ?> value="Film">Film</option>
+										<option <?php echo $event['event_category']=='Musik'?'selected':'' ; ?> value="Musik">Musik</option>
+										<option <?php echo $event['event_category']=='Permainan'?'selected':'' ; ?> value="Permainan">Permainan</option>
+										<option <?php echo $event['event_category']=='Pertunjukan'?'selected':'' ; ?> value="Pertunjukan">Pertunjukan</option>
+										<option <?php echo $event['event_category']=='Tradisi'?'selected':'' ; ?> value="Tradisi">Tradisi</option>
+									</select>
+									</div>
+								</div>
 								
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kategori Event / Event Category</label>
+									<label class="col-lg-3 control-label">Tag Kegiatan / Event Tag</label>
 									<div class="col-lg-5">
-									<input type="text" class="form-control" value="<?php echo $event['event_category'] ; ?>" name="event_category" placeholder="eg. #orjentunggal" />
+									<input type="text" class="form-control" value="<?php echo $event['event_tag'] ; ?>" name="event_tag" placeholder="eg. #orjentunggal, #tari, #musik, #theater, #senitradisi ..." />
 									</div>
 								</div>
 
@@ -317,15 +332,24 @@
 									<label class="col-lg-3 control-label"> Gantikan Gambar ?/ Replace Image ?</label>
 									<div class="col-lg-5">
 										<div class="input-group">
-										<input type="text" class="form-control" readonly>
-										<span class="input-group-btn">
-											<span class="btn btn-default btn-file">
-												Browse&hellip; <input type="file" name="event_image">
+											<input type="text" class="form-control" readonly>
+											<span class="input-group-btn">
+												<span class="btn btn-default btn-file">
+													Browse&hellip; <input type="file" name="event_image">
+												</span>
 											</span>
-										</span>
-									</div><!-- /.input-group -->
+										</div><!-- /.input-group -->
+									<span class="label label-warning" style="font-size:13px;">minimum image width 1080px</span>
 									</div>
 								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Kredit Gambar / Image Credit</label>
+									<div class="col-lg-5">
+									<input type="text" class="form-control" name="event_image_credit" value="<?php echo $event['event_image_credit'] ?>" placeholder="" />
+									</div>
+								</div>
+
 							</fieldset>
 
 							<hr>

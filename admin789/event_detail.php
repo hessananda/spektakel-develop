@@ -52,6 +52,12 @@
 						$user = mysql_fetch_assoc(mysql_query("SELECT * FROM user WHERE user_id = '$event[id_user_yang_input]' ")); 
 					?>
 					
+					<div class="row" style="padding-bottom:15px;">
+						<div class="col-md-12">								
+						<button type="button" class="btn btn-info" onclick="location.href='event_view.php'"><i class="fa fa-mail-reply"></i> Kembali</button>
+						</div>										
+					</div>
+
 					<div class="the-box no-border">
 						<div class="row">
 							<div class="col-md-4 col-sm-6">

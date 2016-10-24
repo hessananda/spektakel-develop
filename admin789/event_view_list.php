@@ -77,7 +77,7 @@
 									$syarat = '';
 
 									if ($_SESSION['user_type']=='kontributor') {
-										$syarat = "WHERE id_user_yang_input = '".$_SESSION['user_id']."' ";
+										$syarat = "WHERE id_user_yang_input = '".$_SESSION['user_id']."' AND event_input_by = '".$_SESSION['user_type']."' ";
 									}
 
 									$users = mysql_query("SELECT * from event ".$syarat." ORDER BY event_id DESC ");

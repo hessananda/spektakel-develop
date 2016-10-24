@@ -225,10 +225,10 @@
 
       <div style="margin-top: 70px;clear:left;" class="mdl-cell mdl-cell--5-col">
 
-         <button id="simpan" value="simpan" name="simpan" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+         <button id="simpan" value="simpan" name="simpan" name="simpan" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Simpan
       </button>
-      <button id="pratinjau" value="pratinjau" name="pratinjau" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      <button id="pratinjau" value="pratinjau" name="pratinjau" name="pratinjau" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Pratinjau
       </button>
       <button id="submit" value="submit" name="submit" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">

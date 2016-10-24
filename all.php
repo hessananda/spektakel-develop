@@ -81,7 +81,7 @@ require_once('config/potong_kata.php');
     </form>
           </div>
 
-        <div class="event mdl-grid">
+        <div class="event mdl-grid" style="background:">
       
       <?php
 // zebra pagination
@@ -100,25 +100,24 @@ require_once('config/potong_kata.php');
                   ORDER BY event_start_date
                   LIMIT ". (($pagination->get_page() - 1) * $records_per_page) . ', ' . $records_per_page."";
 
-        // if query could not be executed
-        if (!($result = @mysqli_query($con,$MySQL))) {
+            // if query could not be executed
+            if (!($result = @mysqli_query($con,$MySQL))) {
 
             // stop execution and display error message
             die(mysqli_error());
 
-        }
+            }
 
         // fetch the total number of records in the table
-$rows = mysqli_fetch_assoc(mysqli_query($con,'SELECT FOUND_ROWS() AS rows'));
+        $rows = mysqli_fBracketHighlighteretch_assoc(mysqli_query($con,'SELECT FOUND_ROWS() AS rows'));
 
-// pass the total number of records to the pagination class
-$pagination->records($rows['rows']);
+        // pass the total number of records to the pagination class
+        $pagination->records($rows['rows']);
 
-// records per page
-$pagination->records_per_page($records_per_page);
+        // records per page
+        $pagination->records_per_page($records_per_page);
 
         // $query = mysqli_query($con,$sql);
-
         while ($event = mysqli_fetch_assoc($result)) {
                    
                 $date=strtotime($event['event_start_date']);
@@ -150,7 +149,7 @@ $pagination->records_per_page($records_per_page);
 
           <div class="center mdl-cell mdl-cell--12-col">
 <br><br>
-<span class="mdl-typography--font-black mdl-typography--text-uppercase">
+<span class="mdl-typography--font-black mdl-t`ypography--text-uppercase">
 <?php
 // render the pagination links
 $pagination->render();
@@ -176,5 +175,10 @@ $pagination->render();
 
 
 </div>
+<style type="text/css">
+  
+  
+</style>
+
 </body>
 </html>

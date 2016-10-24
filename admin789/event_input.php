@@ -154,6 +154,7 @@
 									<div class="col-lg-5">
 									<?php $qry = mysql_query("SELECT * FROM provinces ORDER BY name") ?>
 										<select name="event_province">
+											<option value="0">PROVINSI</option>
 											<?php while ($kece = mysql_fetch_assoc($qry)) {
 											?>
 											<option value="<?php echo $kece['id']?>"><?php echo $kece['name'] ?></option>
@@ -226,7 +227,23 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Kategori Kegiatan / Event Category</label>
 									<div class="col-lg-5">
-									<input type="text" class="form-control" name="event_category" placeholder="eg. #orjentunggal, #tari, #musik, #theater, #senitradisi ..." />
+									<select name="event_category">
+										<option value="0">Kategori Kegiatan</option>
+										<option value="Budaya">Budaya</option>
+										<option value="Festival">Festival</option>
+										<option value="Film">Film</option>
+										<option value="Musik">Musik</option>
+										<option value="Permainan">Permainan</option>
+										<option value="Pertunjukan">Pertunjukan</option>
+										<option value="Tradisi">Tradisi</option>
+									</select>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Tag Kegiatan / Event Tag</label>
+									<div class="col-lg-5">
+									<input type="text" class="form-control" name="event_tag" placeholder="eg. #orjentunggal, #tari, #musik, #theater, #senitradisi ..." />
 									</div>
 								</div>
 
@@ -256,15 +273,24 @@
 									<label class="col-lg-3 control-label">Gambar / Image</label>
 									<div class="col-lg-5">
 										<div class="input-group">
-										<input type="text" class="form-control" readonly>
-										<span class="input-group-btn">
-											<span class="btn btn-default btn-file">
-												Browse&hellip; <input type="file" name="event_image">
+											<input type="text" class="form-control" readonly>
+											<span class="input-group-btn">
+												<span class="btn btn-default btn-file">
+													Browse&hellip; <input type="file" name="event_image">
+												</span>
 											</span>
-										</span>
-									</div><!-- /.input-group -->
+										</div><!-- /.input-group -->										
+										<span class="label label-warning"  style="font-size:13px;">minimum image width 1080px</span>
 									</div>
 								</div>
+								
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Kredit Gambar / Image Credit</label>
+									<div class="col-lg-5">
+									<input type="text" class="form-control" name="event_image_credit" placeholder="" />
+									</div>
+								</div>
+
 							</fieldset>
 
 							<hr>

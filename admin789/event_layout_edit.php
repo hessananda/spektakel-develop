@@ -33,7 +33,7 @@
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li><a href="event_layout.php">Premium COntent</a></li>
+						<li><a href="event_layout.php">Premium Content</a></li>
 						<li class="active">Premium Content</li>
 					</ol>
 					<!-- End breadcrumb -->
@@ -53,11 +53,16 @@
 									<label class="col-lg-3 control-label">Pilih Event <p> (hanya yang sudah di approved) </p></label>
 									<div class="col-lg-5">
 										<select name="event_layout_event_id">
-										
-																				
+																														
 										<?php 	
 											
-											$event_query = mysql_query("SELECT event_title, event_id FROM event WHERE event_start_date >= '$now' AND event_status = 'DISETUJUI' ORDER BY event_title  ");  
+											$event_query = mysql_query("SELECT event_title, event_id FROM event WHERE event_start_date >= '$now' AND event_status = 'DISETUJUI' ORDER BY event_title  ");
+											$count = mysql_num_rows($event_query);
+											if ($count<1) {
+?>
+												<option value="0">Event</option>						
+<?php
+											  }  
 										
 										while ( $event_loop = mysql_fetch_assoc($event_query) ) { ?>
 											<option value="<?php echo $event_loop['event_id'] ?>" <?php echo $layout['event_layout_event_id']==$event_loop['event_id']?'selected':'' ?> ><?php echo $event_loop['event_title'] ?></option>

@@ -43,8 +43,7 @@
 						<div class="col-lg-6">
 							<div align="center">
 								<img width="100%" height="100%" src="event_layout.png" >
-								
-								 
+																 
 							</div>
 						</div>
 
@@ -63,7 +62,10 @@
 									</thead>
 									<tbody>
 										<?php
-											$users = mysql_query("SELECT l.*, e.event_title FROM event_layout l, event e WHERE l.event_layout_event_id = e.event_id ORDER BY l.event_layout_urutan ");									
+
+											$sql = "SELECT l.*, e.event_title FROM event_layout l
+											 LEFT JOIN event e ON l.event_layout_event_id = e.event_id ORDER BY l.event_layout_urutan ";
+											 $users = mysql_query($sql);									
 											
 											while ($user = mysql_fetch_assoc($users)) {
 												?>

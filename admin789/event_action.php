@@ -29,21 +29,50 @@ elseif ($action=='edit')
 	$event_start_time = $_POST['event_start_time_hour'].':'.$_POST['event_start_time_minute'].':'.'00' ;
 	$event_finish_time = $_POST['event_finish_time_hour'].':'.$_POST['event_finish_time_minute'].':'.'00' ;
 
-	$memberUpSelect = "UPDATE event SET event_title = '$_POST[event_title]',
+	$event_description = str_replace("'","\'",$_POST['event_description']);
+	$event_title = str_replace("'","\'",$_POST['event_title']);
+	$event_link = str_replace("'","\'",$_POST['event_link']);
+	$event_city = str_replace("'","\'",$_POST['event_city']);
+	$event_category = str_replace("'","\'",$_POST['event_category']);
+	$event_tag = str_replace("'","\'",$_POST['event_tag']);
+	$event_image_credit = str_replace("'","\'",$_POST['event_image_credit']);
+	$event_location = str_replace("'","\'",$_POST['event_location']);
+	$event_detail_address = str_replace("'","\'",$_POST['event_detail_address']);
+
+	$event_gmap_link = str_replace("'","\'",$_POST['event_gmap_link']);
+	$event_description_english = str_replace("'","\'",$_POST['event_description_english']);
+	$event_more_info = str_replace("'","\'",$_POST['event_more_info']);
+
+	$eo_name = str_replace("'","\'",$_POST['eo_name']);
+	$eo_contact_name = str_replace("'","\'",$_POST['eo_contact_name']);
+	$eo_contact_number = str_replace("'","\'",$_POST['eo_contact_number']);
+	$eo_email = str_replace("'","\'",$_POST['eo_email']);
+
+
+	$eo_address = str_replace("'","\'",$_POST['eo_address']);
+	$eo_facebook = str_replace("'","\'",$_POST['eo_facebook']);
+	$eo_website = str_replace("'","\'",$_POST['eo_website']);	
+
+	$eo_twitter = str_replace("'","\'",$_POST['eo_twitter']);
+	$eo_instagram = str_replace("'","\'",$_POST['eo_instagram']);	
+
+	$memberUpSelect = "UPDATE event SET event_title = '$event_title',
 					   event_start_date = '$_POST[event_start_date]', 
 					   event_finish_date = '$_POST[event_finish_date]', 
 					   event_start_time ='$event_start_time',
 					   event_finish_time = '$event_finish_time',
 					   event_city = '$_POST[event_city]',
-					   event_category = '$_POST[event_category]',
-					   event_link = '$_POST[event_link]',
+					   event_category = '$event_category',
+					   event_link = '$event_link',
 					   event_province = '$_POST[event_province]',
-					   event_location = '$_POST[event_location]',
-					   event_detail_address = '$_POST[event_detail_address]',
-					   event_gmap_link = '$_POST[event_gmap_link]',
-					   event_description = '$_POST[event_description]',
-					   event_description_english = '$_POST[event_description_english]',
-					   event_more_info = '$_POST[event_more_info]',
+					   event_location = '$event_location',
+					   event_tag = '$event_tag',
+					   event_image_credit = '$event_image_credit',
+					   event_detail_address = '$event_detail_address',
+					   event_gmap_link = '$event_gmap_link',
+					   event_description = '$event_description',
+					   event_description_english = '$event_description_english',
+					   event_more_info = '$event_more_info',
 					   event_type = '$_POST[event_type]',
 					   event_status = '$_POST[event_status]',
 					   id_user_yang_edit = '$_SESSION[user_id]',
@@ -51,15 +80,15 @@ elseif ($action=='edit')
 					   event_edited_time = '$now'
 					   WHERE event_id = '$id'";
 
-		$event_organizer = "UPDATE event_organizer SET eo_name = '$_POST[eo_name]',
-					   eo_contact_name = '$_POST[eo_contact_name]', 
-					   eo_contact_number ='$_POST[eo_contact_number]',
-					   eo_email ='$_POST[eo_email]',
-					   eo_address = '$_POST[eo_address]',
-					   eo_website ='$_POST[eo_website]',
-					   eo_facebook ='$_POST[eo_facebook]',
-					   eo_twitter ='$_POST[eo_twitter]',
-					   eo_instagram = '$_POST[eo_instagram]'
+		$event_organizer = "UPDATE event_organizer SET eo_name = '$eo_name',
+					   eo_contact_name = '$eo_contact_name', 
+					   eo_contact_number ='$eo_contact_number',
+					   eo_email ='$eo_email',
+					   eo_address = '$eo_address',
+					   eo_website ='$eo_website',
+					   eo_facebook ='$eo_facebook',
+					   eo_twitter ='$eo_twitter',
+					   eo_instagram = '$eo_instagram'
 					   WHERE eo_id = '$_POST[event_organizer_id]' ";
 
 	mysql_query($memberUpSelect);
@@ -71,7 +100,7 @@ elseif ($action=='edit')
 	if ($nama_foto <> '')
 		{
 
-			$hesa->delete_file('event_image','event',"../images/events",'event_id',$id);
+			@$hesa->delete_file('event_image','event',"../images/events",'event_id',$id);
 
 			$hesa->upload_file("../images/events",'event_image');
 
@@ -101,48 +130,77 @@ elseif ($action=='input')
 
 $hesa->upload_file("../images/events",'event_image');
 
- mysql_query("INSERT INTO event_organizer VALUES (NULL,
- 										'$_POST[eo_name]',
- 										'$_POST[eo_contact_name]',
- 										'$_POST[eo_contact_number]',
- 										'$_POST[eo_email]',										
+	$event_start_time = $_POST['event_start_time_hour'].':'.$_POST['event_start_time_minute'].':'.'00' ;
+	$event_finish_time = $_POST['event_finish_time_hour'].':'.$_POST['event_finish_time_minute'].':'.'00' ;
 
- 										'$_POST[eo_website]',
- 										'$_POST[eo_facebook]',
- 										'$_POST[eo_twitter]',
- 										'$_POST[eo_instagram]',
- 										'$_POST[eo_address]'
+	$event_description = str_replace("'","\'",$_POST['event_description']);
+	$event_title = str_replace("'","\'",$_POST['event_title']);
+	$event_link = str_replace("'","\'",$_POST['event_link']);
+	$event_city = str_replace("'","\'",$_POST['event_city']);
+	$event_tag = str_replace("'","\'",$_POST['event_tag']);
+	$event_image_credit = str_replace("'","\'",$_POST['event_image_credit']);
+	$event_category = str_replace("'","\'",$_POST['event_category']);
+	$event_location = str_replace("'","\'",$_POST['event_location']);
+	$event_detail_address = str_replace("'","\'",$_POST['event_detail_address']);
+
+	$event_gmap_link = str_replace("'","\'",$_POST['event_gmap_link']);
+	$event_description_english = str_replace("'","\'",$_POST['event_description_english']);
+	$event_more_info = str_replace("'","\'",$_POST['event_more_info']);
+
+	$eo_name = str_replace("'","\'",$_POST['eo_name']);
+	$eo_contact_name = str_replace("'","\'",$_POST['eo_contact_name']);
+	$eo_contact_number = str_replace("'","\'",$_POST['eo_contact_number']);
+	$eo_email = str_replace("'","\'",$_POST['eo_email']);
+
+
+	$eo_address = str_replace("'","\'",$_POST['eo_address']);
+	$eo_facebook = str_replace("'","\'",$_POST['eo_facebook']);
+	$eo_website = str_replace("'","\'",$_POST['eo_website']);	
+
+	$eo_twitter = str_replace("'","\'",$_POST['eo_twitter']);
+	$eo_instagram = str_replace("'","\'",$_POST['eo_instagram']);	
+
+ mysql_query("INSERT INTO event_organizer VALUES (NULL,
+ 										'$eo_name',
+ 										'$eo_contact_name',
+ 										'$eo_contact_number',
+ 										'$eo_email',										
+
+ 										'$eo_website',
+ 										'$eo_facebook',
+ 										'$eo_twitter',
+ 										'$eo_instagram',
+ 										'$eo_address'
  										) ");
 
- $eo = mysql_fetch_assoc(mysql_query("SELECT eo_id FROM event_organizer WHERE eo_name = '$_POST[eo_name]' 
- 										 AND eo_contact_name = '$_POST[eo_contact_name]'
- 										 AND eo_contact_number = '$_POST[eo_contact_number]'
- 										 AND eo_email = '$_POST[eo_email]'
- 										 AND eo_address = '$_POST[eo_address]' "));
+ $eo = mysql_fetch_assoc(mysql_query("SELECT eo_id FROM event_organizer ORDER BY eo_id DESC LIMIT 0,1 "));
+ echo $eo_last_id = $eo['eo_id'];
 
 $event_start_time = $_POST['event_start_time_hour'].':'.$_POST['event_start_time_minute'].':'.'00' ;
 $event_finish_time = $_POST['event_finish_time_hour'].':'.$_POST['event_finish_time_minute'].':'.'00' ;
 
  mysql_query("INSERT INTO event VALUES ('',
- 										'$_POST[event_title]',
+ 										'$event_title',
  										'$_POST[event_start_date]',
  										'$_POST[event_finish_date]',
  										'$event_start_time',
  										'$event_finish_time',
- 										'$_POST[event_city]',
+ 										'$event_city',
  										'$_POST[event_province]',
- 										'$_POST[event_category]',
- 										'$_POST[event_link]',
- 										'$_POST[event_location]',
- 										'$_POST[event_detail_address]',
- 										'$_POST[event_gmap_link]',
+ 										'$event_category',
+ 										'$event_tag',
+ 										'$event_link',
+ 										'$event_location',
+ 										'$event_detail_address',
+ 										'$event_gmap_link',
  										'$nama_final',
- 										'$_POST[event_description]',
- 										'$_POST[event_description_english]',
- 										'$_POST[event_more_info]',
+ 										'$event_image_credit',
+ 										'$event_description',
+ 										'$event_description_english',
+ 										'$event_more_info',
  										'BELUM DIREVIEW',
  										'$_POST[event_type]', 										
- 										'$eo[eo_id]',
+ 										'$eo_last_id',
  										'$_SESSION[user_id]',
  										'$_SESSION[user_type]',
  										'$now',
@@ -171,6 +229,10 @@ elseif ($action=='delete_checked'){
 		}	
 	
 	}
+
+	?>
+<meta http-equiv="refresh" content="0; url=event_view.php" />
+<?php
 	
 
 }
