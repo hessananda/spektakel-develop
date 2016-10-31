@@ -56,7 +56,7 @@
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
 						<li><a href="event_view.php">Kegiatan</a></li>
-						<li class="active">Input Kegiatan</li>
+						<li class="active">Kegiatan Baru</li>
 					</ol>
 					<!-- End breadcrumb -->
 					
@@ -64,31 +64,31 @@
 						<form id="eventform" method="post" action="event_action.php?action=input" class="form-horizontal" enctype="multipart/form-data" >
 						
 							<fieldset>
-								<legend>Kegiatan Baru / New Event</legend>
+								<legend>Kegiatan Baru</legend>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Judul Kegiatan / Event Name</label>
+									<label class="col-lg-3 control-label">Judul Kegiatan</label>
 									<div class="col-lg-5">
 										<input type="text" class="form-control" name="event_title" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tanggal Mulai / Start Date</label>
+									<label class="col-lg-3 control-label">Tanggal Mulai</label>
 									<div class="col-lg-5">
-										<input type="text" name="event_start_date" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
+										<input type="text" name="event_start_date" class="form-control datepicker" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tanggal Selesai / Finish Date</label>
+									<label class="col-lg-3 control-label">Tanggal Selesai</label>
 									<div class="col-lg-5">
-										<input type="text" name="event_finish_date" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
+										<input type="text" name="event_finish_date" class="form-control datepicker" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Jam mulai / Start time</label>
+									<label class="col-lg-3 control-label">Jam mulai</label>
 									<div class="col-lg-5">
 									
 									<select name="event_start_time_hour">
@@ -119,7 +119,7 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Jam selesai / Finish time</label>
+									<label class="col-lg-3 control-label">Jam selesai</label>
 									<div class="col-lg-5">
 
 										<select name="event_finish_time_hour">
@@ -150,7 +150,7 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Provinsi / Province</label>
+									<label class="col-lg-3 control-label">Provinsi</label>
 									<div class="col-lg-5">
 									<?php $qry = mysql_query("SELECT * FROM provinces ORDER BY name") ?>
 										<select name="event_province">
@@ -165,28 +165,28 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kota / City</label>
+									<label class="col-lg-3 control-label">Kota / Kabupaten</label>
 									<div class="col-lg-5">
-									<input type="text" class="form-control" name="event_city" placeholder="eg. #Jakarta" />
+									<input type="text" class="form-control" name="event_city" placeholder="eg. Jakarta" />
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tempat Kegiatan / Event Location</label>
+									<label class="col-lg-3 control-label">Tempat Kegiatan</label>
 									<div class="col-lg-5">
-									<input type="text" class="form-control" name="event_location" placeholder="eg. #Lapangan Desa Cindaga" />
+									<input type="text" class="form-control" name="event_location" placeholder="eg. Lapangan Desa Cindaga" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Alamat Detail Kegiatan / Event Detail Address</label>
+									<label class="col-lg-3 control-label">Alamat Detail Kegiatan</label>
 									<div class="col-lg-5">
 										<textarea name="event_detail_address" class="form-control no-resize"></textarea>
 									</div>
 								</div>								
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Deskripsi / Description (Bahasa Indonesia)</label>
+									<label class="col-lg-3 control-label">Deskripsi</label>
 									<div class="col-lg-5">
 										<textarea id="field" onkeyup="countChar(this)" name="event_description" rows="5" maxlength="500" class="form-control no-resize"></textarea>
 										<div id="charNum"></div>
@@ -204,28 +204,23 @@
 								<input type="hidden" name="event_description_english" value="">
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Informasi tambahan / More Information</label>
+									<label class="col-lg-3 control-label">Informasi tambahan</label>
 									<div class="col-lg-5">
 										<textarea name="event_more_info" class="form-control no-resize"></textarea>
 									</div>
 								</div>
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Tautan Kegiatan (jika ada) / Event link (if any)</label>
-									<div class="col-lg-5">
-										<input type="text" class="form-control" name="event_link" placeholder="http://" />
-									</div>
-								</div>
+								<input type="hidden" name="event_link" value="" >
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tautan Google Maps / Google Maps Link</label>
+									<label class="col-lg-3 control-label">Tautan Google Maps</label>
 									<div class="col-lg-5">
 										<input type="text" class="form-control" name="event_gmap_link" placeholder="http://" />
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kategori Kegiatan / Event Category</label>
+									<label class="col-lg-3 control-label">Kategori Kegiatan</label>
 									<div class="col-lg-5">
 									<select name="event_category">
 										<option value="0">Kategori Kegiatan</option>
@@ -233,36 +228,39 @@
 										<option value="Festival">Festival</option>
 										<option value="Film">Film</option>
 										<option value="Musik">Musik</option>
+										<option value="Olahraga">Olahraga</option>
 										<option value="Permainan">Permainan</option>
 										<option value="Pertunjukan">Pertunjukan</option>
 										<option value="Tradisi">Tradisi</option>
+										<option value="Sastra">Sastra</option>
+										<option value="Seni Rupa">Seni Rupa</option>
 									</select>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tag Kegiatan / Event Tag</label>
+									<label class="col-lg-3 control-label">Tag Kegiatan</label>
 									<div class="col-lg-5">
 									<input type="text" class="form-control" name="event_tag" placeholder="eg. #orjentunggal, #tari, #musik, #theater, #senitradisi ..." />
 									</div>
 								</div>
 
 								<div class="form-group">
-										<label class="col-lg-3 control-label">Jenis Kegiatan / Event Type</label>
+										<label class="col-lg-3 control-label">Jenis Kegiatan</label>
 										<div class="col-lg-5">
 											<div class="radio">
 												<label>
-													<input type="radio" name="event_type" value="berbayar/paid" required data-bv-notempty-message="Event type is required" /> Berbayar / Paid
+													<input type="radio" name="event_type" value="berbayar/paid" required data-bv-notempty-message="Event type is required" /> Berbayar
 												</label>
 											</div>
 											<div class="radio">
 												<label>
-													<input checked type="radio" name="event_type" value="gratis/free" /> Gratis / Free
+													<input checked type="radio" name="event_type" value="gratis/free" /> Gratis
 												</label>
 											</div>
 											<div class="radio">
 												<label>
-													<input type="radio" name="event_type" value="keduanya/both" /> Keduanya / Both
+													<input type="radio" name="event_type" value="keduanya/both" /> Berbayar & Gratis
 												</label>
 											</div>
 											
@@ -270,7 +268,7 @@
 									</div>															
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Gambar / Image</label>
+									<label class="col-lg-3 control-label">Gambar</label>
 									<div class="col-lg-5">
 										<div class="input-group">
 											<input type="text" class="form-control" readonly>
@@ -285,9 +283,20 @@
 								</div>
 								
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kredit Gambar / Image Credit</label>
+									<label class="col-lg-3 control-label">Kredit Gambar</label>
 									<div class="col-lg-5">
 									<input type="text" class="form-control" name="event_image_credit" placeholder="" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Overlay (gelap)</label>
+									<div class="col-lg-1">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="overlay" value="dark" />
+											</label>
+										</div>
 									</div>
 								</div>
 
@@ -295,50 +304,67 @@
 
 							<hr>
 
-							<legend>Panitia Kegiatan / Event Organizer</legend>
+							<legend>Panitia Kegiatan</legend>
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Nama panitia Kegiatan / Event Organizer Name</label>
+								<label class="col-lg-3 control-label">Nama panitia Kegiatan</label>
 								<div class="col-lg-5">
 									<input type="text" class="form-control" name="eo_name" />
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Nama kontak / Contact Name</label>
+								<label class="col-lg-3 control-label">Nama kontak</label>
 								<div class="col-lg-5">
 									<input type="text" class="form-control" name="eo_contact_name" />
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Nomor kontak / Contact number</label>
+								<label class="col-lg-3 control-label">Nomor kontak</label>
 								<div class="col-lg-5">
 									<input type="text" class="form-control" name="eo_contact_number" />
 								</div>
 							</div>
 
+							<input type="hidden" value="" class="form-control" name="eo_address" />
+							
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Alamat panitia Kegiatan / Event Organizer Address</label>
-								<div class="col-lg-5">
-									<input type="text" class="form-control" name="eo_address" />
+								<label class="col-lg-3 control-label">Email</label>
+								<div class="col-lg-5">																	
+									<input type="text" class="form-control" name="eo_email" placeholder="basuki@gmail.com" />
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Email / Email</label>
-								<div class="col-lg-5">
-									<input type="text" class="form-control" name="eo_email" />
+								<label class="col-lg-3 control-label">Website</label>
+								<div class="col-lg-5">								
+									<input  placeholder="http://www.domainanda.com" type="text" class="form-control" name="eo_website" />
 								</div>
 							</div>
 
-								<?php textbox("Website","eo_website","") ?>
-								<?php textbox("Facebook","eo_facebook","") ?>
-								<?php textbox("Twitter","eo_twitter","") ?>
-								<?php textbox("Instagram","eo_instagram","") ?>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Facebook</label>
+								<div class="col-lg-5">								
+									<input type="text"  placeholder="http://www.facebook.com/" class="form-control" name="eo_facebook" />								
+								</div>
+							</div>
 
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Twitter</label>
+								<div class="col-lg-5">																	
+									<input type="text" class="form-control" placeholder="http://twitter.com/" name="eo_twitter" />								
+								</div>
+							</div>
 
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Instagram</label>
+								<div class="col-lg-5">
+									<input type="text" class="form-control" placeholder="http://www.instagram.com/" name="eo_instagram" />
+								</div>
+							</div>
+															
 							<div class="form-group">
 								<div class="col-lg-9 col-lg-offset-3">
 									<button type="submit" class="btn btn-primary">Submit</button>

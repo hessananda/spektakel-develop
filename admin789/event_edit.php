@@ -56,7 +56,7 @@
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
 						<li><a href="event_view.php">Kegiatan</a></li>
-						<li class="active">Edit Kegiatan</li>
+						<li class="active">Ubah Kegiatan</li>
 					</ol>
 					<!-- End breadcrumb -->
 					<?php
@@ -68,26 +68,26 @@
 						<form id="eventform" method="post" action="event_action.php?action=edit&id=<?php echo $id ?>" class="form-horizontal" enctype="multipart/form-data" >
 							
 							<fieldset>
-								<legend>Ubah Kegiatan / Edit Event</legend>
+								<legend>Ubah Kegiatan</legend>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Judul Event / Event Name</label>
+									<label class="col-lg-3 control-label">Judul Event</label>
 									<div class="col-lg-5">
 										<input type="text" value="<?php echo $event['event_title'] ?>" class="form-control" name="event_title" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tanggal mulai/ Start Date </label>
+									<label class="col-lg-3 control-label">Tanggal mulai</label>
 									<div class="col-lg-5">
-										<input type="date" value="<?php echo $event['event_start_date'] ?>" name="event_start_date" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
+										<input type="text" value="<?php echo date('d-m-Y', strtotime($event['event_start_date'])) ; ?>" name="event_start_date" class="form-control datepicker" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tanggal Selesai/ Finish Date </label>
+									<label class="col-lg-3 control-label">Tanggal Selesai</label>
 									<div class="col-lg-5">
-										<input type="date" value="<?php echo $event['event_finish_date'] ?>" name="event_finish_date" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd">
+										<input type="text" value="<?php echo date('d-m-Y',strtotime($event['event_finish_date'])) ; ?>" name="event_finish_date" class="form-control datepicker" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
 									</div>
 								</div>
 
@@ -99,7 +99,7 @@
 								?>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Jam mulai / Start time</label>
+									<label class="col-lg-3 control-label">Jam mulai</label>
 									<div class="col-lg-5">
 									
 									<select name="event_start_time_hour">
@@ -142,7 +142,7 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Jam selesai / Finish time</label>
+									<label class="col-lg-3 control-label">Jam selesai</label>
 									<div class="col-lg-5">
 
 										<select name="event_finish_time_hour">
@@ -186,7 +186,7 @@
 								
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Provinsi / Province</label>
+									<label class="col-lg-3 control-label">Provinsi</label>
 									<div class="col-lg-5">
 									<?php $qry = mysql_query("SELECT * FROM provinces ORDER BY name") ?>
 										<select name="event_province">
@@ -200,28 +200,28 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kota / City</label>
+									<label class="col-lg-3 control-label">Kota / kabupaten</label>
 									<div class="col-lg-5">
 									<input type="text" class="form-control" name="event_city" value="<?php echo $event['event_city'] ; ?>" placeholder="eg. #Jakarta" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tempat Acara / Event Location</label>
+									<label class="col-lg-3 control-label">Tempat Acara</label>
 									<div class="col-lg-5">
 									<input type="text" class="form-control" name="event_location" value="<?php echo $event['event_location'] ; ?>" placeholder="eg. #Lapangan Desa Cindaga" />
 									</div>
 								</div>
 														
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Detail Alamat / Detail Address</label>
+									<label class="col-lg-3 control-label">Detail Alamat</label>
 									<div class="col-lg-5">
 										<textarea name="event_detail_address" class="form-control no-resize"><?php echo $event['event_detail_address'] ; ?></textarea>
 									</div>
 								</div>								
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Deskripsi / Description (Bahasa Indonesia)</label>
+									<label class="col-lg-3 control-label">Deskripsi</label>
 									<div class="col-lg-5">
 										<textarea name="event_description" id="field" onkeyup="countChar(this)" rows="5" maxlength="500" class="form-control no-resize"><?php echo $event['event_description'] ?></textarea>
 									<div id="charNum"></div>
@@ -239,28 +239,23 @@
 								<input type="hidden" name="event_description_english" value="">
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Informasi Tambahan / More Information</label>
+									<label class="col-lg-3 control-label">Informasi Tambahan</label>
 									<div class="col-lg-5">
 										<textarea name="event_more_info" class="form-control no-resize"><?php echo $event['event_more_info'] ; ?></textarea>
 									</div>
 								</div>
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Link acara (jika ada) / Event link (if any)</label>
-									<div class="col-lg-5">
-										<input type="text" class="form-control" value="<?php echo $event['event_link'] ; ?>" name="event_link" placeholder="http://" />
-									</div>
-								</div>
+								<input type="hidden" name="event_link" value="<?php echo $event['event_link'] ; ?>" >
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Link Google Maps (jika ada) / Google Maps Link (if any)</label>
+									<label class="col-lg-3 control-label">Link Google Maps (jika ada)</label>
 									<div class="col-lg-5">
 										<input type="text" class="form-control" value="<?php echo $event['event_gmap_link'] ; ?>" name="event_gmap_link" placeholder="http://" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kategori Kegiatan / Event Category</label>
+									<label class="col-lg-3 control-label">Kategori Kegiatan</label>
 									<div class="col-lg-5">
 									<select name="event_category">
 										<option <?php echo $event['event_category']=='' OR $event['event_category']=='0' ?'selected':'' ; ?> value="Budaya">Kategori Kegiatan</option>
@@ -268,22 +263,25 @@
 										<option <?php echo $event['event_category']=='Festival'?'selected':'' ; ?> value="Festival">Festival</option>
 										<option <?php echo $event['event_category']=='Film'?'selected':'' ; ?> value="Film">Film</option>
 										<option <?php echo $event['event_category']=='Musik'?'selected':'' ; ?> value="Musik">Musik</option>
+										<option <?php echo $event['event_category']=='Olahraga'?'selected':'' ; ?> value="Olahraga">Olahraga</option>
 										<option <?php echo $event['event_category']=='Permainan'?'selected':'' ; ?> value="Permainan">Permainan</option>
 										<option <?php echo $event['event_category']=='Pertunjukan'?'selected':'' ; ?> value="Pertunjukan">Pertunjukan</option>
 										<option <?php echo $event['event_category']=='Tradisi'?'selected':'' ; ?> value="Tradisi">Tradisi</option>
+										<option <?php echo $event['event_category']=='Sastra'?'selected':'' ; ?> value="Sastra">Sastra</option>
+										<option <?php echo $event['event_category']=='Seni Rupa'?'selected':'' ; ?> value="Seni Rupa">Seni Rupa</option>
 									</select>
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Tag Kegiatan / Event Tag</label>
+									<label class="col-lg-3 control-label">Tag Kegiatan</label>
 									<div class="col-lg-5">
 									<input type="text" class="form-control" value="<?php echo $event['event_tag'] ; ?>" name="event_tag" placeholder="eg. #orjentunggal, #tari, #musik, #theater, #senitradisi ..." />
 									</div>
 								</div>
 
 								<div class="form-group">
-										<label class="col-lg-3 control-label">Jenis Event / Event Type</label>
+										<label class="col-lg-3 control-label">Jenis Event</label>
 										<div class="col-lg-5">
 										<?php if ($event['event_type']=='gratis/free') {
 											$free = "checked='checked'";
@@ -304,17 +302,17 @@
 										?>
 											<div class="radio">
 												<label>
-													<input type="radio" <?php echo $paid ?> name="event_type" value="berbayar/paid" required data-bv-notempty-message="Event type is required" /> Berbayar / Paid 
+													<input type="radio" <?php echo $paid ?> name="event_type" value="berbayar/paid" required data-bv-notempty-message="Event type is required" /> Berbayar
 												</label>
 											</div>
 											<div class="radio">
 												<label>
-													<input type="radio" name="event_type" <?php echo $free ?> value="gratis/free" /> Gratis / Free
+													<input type="radio" name="event_type" <?php echo $free ?> value="gratis/free" /> Gratis
 												</label>
 											</div>
 											<div class="radio">
 												<label>
-													<input type="radio" name="event_type" <?php echo $both ?> value="keduanya/both" /> Keduanya / Both
+													<input type="radio" name="event_type" <?php echo $both ?> value="keduanya/both" /> Bebayar & Gratis
 												</label>
 											</div>
 											
@@ -322,14 +320,16 @@
 									</div>								
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Gambar Lama / Old Image</label>
+									<label class="col-lg-3 control-label">Gambar Lama</label>
 									<div class="col-lg-5">
 										<img width="50%" height="50%" src="../images/events/<?php echo $event['event_image'] ?>">
+										<br>
+										<a href="../images/events/<?php echo $event['event_image'] ?>" download>Download Image</a>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label"> Gantikan Gambar ?/ Replace Image ?</label>
+									<label class="col-lg-3 control-label"> Gantikan Gambar ?</label>
 									<div class="col-lg-5">
 										<div class="input-group">
 											<input type="text" class="form-control" readonly>
@@ -344,14 +344,24 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kredit Gambar / Image Credit</label>
+									<label class="col-lg-3 control-label">Kredit Gambar</label>
 									<div class="col-lg-5">
 									<input type="text" class="form-control" name="event_image_credit" value="<?php echo $event['event_image_credit'] ?>" placeholder="" />
 									</div>
 								</div>
 
-							</fieldset>
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Overlay (gelap)</label>
+									<div class="col-lg-1">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="overlay" value="dark" <?php echo $event['overlay']=='dark'?'checked':'' ?> />
+										</label>
+									</div>
+									</div>
+								</div>
 
+							</fieldset>
 							<hr>
 
 							<legend>Panitia Acara / Event Organizer</legend>
@@ -363,35 +373,30 @@
 							<input type="hidden" name="event_organizer_id" value="<?php echo $event['event_organizer_id'] ?>">
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Nama panitia acara / Event Organizer Name</label>
+								<label class="col-lg-3 control-label">Nama panitia acara</label>
 								<div class="col-lg-5">
 									<input type="text" value="<?php echo $eo['eo_name']?>" class="form-control" name="eo_name" />
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Nama kontak / Contact Name</label>
+								<label class="col-lg-3 control-label">Nama kontak</label>
 								<div class="col-lg-5">
 									<input type="text" value="<?php echo $eo['eo_contact_name']?>" class="form-control" name="eo_contact_name" />
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Nomor kontak / Contact number</label>
+								<label class="col-lg-3 control-label">Nomor kontak</label>
 								<div class="col-lg-5">
 									<input type="text" class="form-control" value="<?php echo $eo['eo_contact_number']?>" name="eo_contact_number" />
 								</div>
 							</div>
 
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Alamat panitia acara / Event Organizer Address</label>
-								<div class="col-lg-5">
-									<input type="text" class="form-control" value="<?php echo $eo['eo_address']?>" name="eo_address" />
-								</div>
-							</div>
+							<input type="hidden" name="eo_address" value="<?php echo $eo['eo_address']?>">
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Email / Email</label>
+								<label class="col-lg-3 control-label">Email</label>
 								<div class="col-lg-5">
 									<input type="text" class="form-control" name="eo_email" value="<?php echo $eo['eo_email']?>" />
 								</div>
@@ -399,34 +404,35 @@
 
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Website</label>
-								<div class="col-lg-5">
-									<input type="text" class="form-control" name="eo_website"value="<?php echo $eo['eo_website']?>" />
+								<div class="col-lg-5">								
+									<input type="text" placeholder="http://www.domainanda.com" class="form-control" name="eo_website"value="<?php echo $eo['eo_website']?>" />									
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Facebook</label>
-								<div class="col-lg-5">
-									<input type="text" class="form-control" name="eo_facebook" value="<?php echo $eo['eo_facebook']?>" />
+								<div class="col-lg-5">								
+									<input type="text" placeholder="http://www.facebook.com/" class="form-control" name="eo_facebook" value="<?php echo $eo['eo_facebook']?>" />							
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Twitter</label>
-								<div class="col-lg-5">
-									<input type="text" class="form-control" name="eo_twitter" value="<?php echo $eo['eo_twitter']?>" />
+								<div class="col-lg-5">								
+									<input type="text" placeholder="http://www.twitter.com/" class="form-control" name="eo_twitter" value="<?php echo $eo['eo_twitter']?>" />									
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Instagram</label>
-								<div class="col-lg-5">
-									<input type="text" class="form-control" name="eo_instagram" value="<?php echo $eo['eo_instagram']?>" />
+								<div class="col-lg-5">								
+									<input type="text" placeholder="http://www.Instagram.com" class="form-control" name="eo_instagram" value="<?php echo $eo['eo_instagram']?>" />
+									
 								</div>
 							</div>							
 
 							<hr>
-							<legend>Status Acara / Event Status</legend>
+							<legend>Status Acara</legend>
 
 							<div class="form-group">
 								

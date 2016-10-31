@@ -62,17 +62,10 @@
 						<form id="eventform" method="post" action="slider_action.php?action=input" class="form-horizontal" enctype="multipart/form-data" >
 						
 							<fieldset>
-								<legend>Slide Baru / New Slide</legend>
+								<legend>Slide Baru</legend>							
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Judul Slider / Slide Title</label>
-									<div class="col-lg-5">
-										<input type="text" class="form-control" name="slide_title" />
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Gambar / Image</label>
+									<label class="col-lg-3 control-label">Gambar</label>
 									<div class="col-lg-5">
 										<div class="input-group">
 										<input type="text" class="form-control" readonly>
@@ -85,50 +78,37 @@
 									</div>
 								</div>
 
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Isi Slide / Slide Content</label>
-								<div class="col-lg-5">
-								<textarea class="form-control" rows="10" name="slide_content"></textarea>									
-								</div>
-							</div>
-<!-- 
 								<div class="form-group">
-										<label class="col-lg-3 control-label">Jenis Acara / Event Type</label>
-										<div class="col-lg-5">
-											<div class="radio">
-												<label>
-													<input type="radio" name="event_type" value="berbayar/paid" required data-bv-notempty-message="Event type is required" /> Berbayar / Paid
-												</label>
-											</div>
-											<div class="radio">
-												<label>
-													<input selected type="radio" name="event_type" value="gratis/free" /> Gratis / Free
-												</label>
-											</div>
-											<div class="radio">
-												<label>
-													<input selected type="radio" name="event_type" value="keduanya/both" /> Keduanya / Both
-												</label>
-											</div>
-											
-										</div>
-									</div>	 -->		
-									<?php $max = mysql_fetch_assoc(mysql_query("SELECT MAX(slider_id) id FROM slider")) ;
-										  $id = $max['id']+1;
-									?>												
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Tautan Slide / Slide link</label>
+									<label class="col-lg-3 control-label">Ribbon</label>
 									<div class="col-lg-5">
-										<input type="text" class="form-control" name="slide_link" />
+										<input type="text" class="form-control" name="slide_content" value="<?php echo $slide['slider_content'] ; ?>" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Kata di Tombol / Slide Button word</label>
+									<label class="col-lg-3 control-label">Judul Slider</label>
 									<div class="col-lg-5">
-										<input type="text" value="http://beta.spektakel.id/slider-detail?id=<?= $id ?>" class="form-control" name="slide_button" />
+										<input type="text" class="form-control" name="slide_title" />
 									</div>
 								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Kata-kata</label>
+									<div class="col-lg-5">
+										<input type="text" class="form-control" name="slide_button" />
+									</div>
+								</div>												
+
+									<?php $max = mysql_fetch_assoc(mysql_query("SELECT MAX(slider_id) id FROM slider")) ;
+										  $id = $max['id']+1;
+									?>												
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Tautan Slide</label>
+									<div class="col-lg-5">
+										<input type="text" class="form-control" name="slide_link" />
+									</div>
+								</div>
+								
 
 							</fieldset>						
 

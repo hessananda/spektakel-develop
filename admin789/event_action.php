@@ -25,6 +25,33 @@ if ($action=='hapus')
 elseif ($action=='edit')
 {
 	$id=$_GET['id'];
+	
+	$nama_foto = $_FILES['event_image']['name'];
+	if ($nama_foto <> '')
+		{
+				$image = mysql_fetch_assoc(mysql_query("SELECT * FROM event WHERE event_id = '$id' "));
+				if ($image['event_image'] == 'template_budaya.jpg' OR 
+					$image['event_image'] == 'template_festival.jpg' OR
+					$image['event_image'] == 'template_film.jpg' OR
+					$image['event_image'] == 'template_musik.jpg' OR
+					$image['event_image'] == 'template_olahraga.jpg' OR
+					$image['event_image'] == 'template_permainan.jpg' OR
+					$image['event_image'] == 'template_pertunjukan.jpg' OR
+					$image['event_image'] == 'template_tradisi.jpg' OR
+					$image['event_image'] == 'template_sastra.jpg' OR
+					$image['event_image'] == 'template_senirupa.jpg' ) 
+				{
+					#tidak melakukan apa apa
+				}else{
+					@$hesa->delete_file('event_image','event',"../images/events",'event_id',$id);	
+				}			
+
+			$hesa->upload_file("../images/events",'event_image');
+
+			mysql_query("UPDATE event SET event_image = '$nama_final' WHERE event_id = '$id' ");
+
+		}
+	
 
 	$event_start_time = $_POST['event_start_time_hour'].':'.$_POST['event_start_time_minute'].':'.'00' ;
 	$event_finish_time = $_POST['event_finish_time_hour'].':'.$_POST['event_finish_time_minute'].':'.'00' ;
@@ -43,11 +70,12 @@ elseif ($action=='edit')
 	$event_description_english = str_replace("'","\'",$_POST['event_description_english']);
 	$event_more_info = str_replace("'","\'",$_POST['event_more_info']);
 
+	$overlay = isset($_POST['overlay']) ? $_POST['overlay']:"normal";
+
 	$eo_name = str_replace("'","\'",$_POST['eo_name']);
 	$eo_contact_name = str_replace("'","\'",$_POST['eo_contact_name']);
 	$eo_contact_number = str_replace("'","\'",$_POST['eo_contact_number']);
 	$eo_email = str_replace("'","\'",$_POST['eo_email']);
-
 
 	$eo_address = str_replace("'","\'",$_POST['eo_address']);
 	$eo_facebook = str_replace("'","\'",$_POST['eo_facebook']);
@@ -55,10 +83,13 @@ elseif ($action=='edit')
 
 	$eo_twitter = str_replace("'","\'",$_POST['eo_twitter']);
 	$eo_instagram = str_replace("'","\'",$_POST['eo_instagram']);	
+	
+	$event_start_date = date("Y-m-d", strtotime($_POST['event_start_date']) );
+	$event_finish_date = date("Y-m-d", strtotime($_POST['event_finish_date']) );
 
 	$memberUpSelect = "UPDATE event SET event_title = '$event_title',
-					   event_start_date = '$_POST[event_start_date]', 
-					   event_finish_date = '$_POST[event_finish_date]', 
+					   event_start_date = '$event_start_date', 
+					   event_finish_date = '$event_finish_date', 
 					   event_start_time ='$event_start_time',
 					   event_finish_time = '$event_finish_time',
 					   event_city = '$_POST[event_city]',
@@ -77,7 +108,8 @@ elseif ($action=='edit')
 					   event_status = '$_POST[event_status]',
 					   id_user_yang_edit = '$_SESSION[user_id]',
 					   event_edited_by = '$_SESSION[user_type]',
-					   event_edited_time = '$now'
+					   event_edited_time = '$now',
+					   overlay = '$overlay'
 					   WHERE event_id = '$id'";
 
 		$event_organizer = "UPDATE event_organizer SET eo_name = '$eo_name',
@@ -94,19 +126,6 @@ elseif ($action=='edit')
 	mysql_query($memberUpSelect);
 	echo mysql_error();
 	mysql_query($event_organizer);
-
-	$nama_foto = $_FILES['event_image']['name'];
-
-	if ($nama_foto <> '')
-		{
-
-			@$hesa->delete_file('event_image','event',"../images/events",'event_id',$id);
-
-			$hesa->upload_file("../images/events",'event_image');
-
-			mysql_query("UPDATE event SET event_image = '$nama_final' WHERE event_id = '$id' ");
-
-		}
 	
 	header("location:event_edit.php?id=$id");
 
@@ -146,6 +165,7 @@ $hesa->upload_file("../images/events",'event_image');
 	$event_gmap_link = str_replace("'","\'",$_POST['event_gmap_link']);
 	$event_description_english = str_replace("'","\'",$_POST['event_description_english']);
 	$event_more_info = str_replace("'","\'",$_POST['event_more_info']);
+	$overlay = isset($_POST['overlay']) ? $_POST['overlay']:"normal";
 
 	$eo_name = str_replace("'","\'",$_POST['eo_name']);
 	$eo_contact_name = str_replace("'","\'",$_POST['eo_contact_name']);
@@ -159,6 +179,9 @@ $hesa->upload_file("../images/events",'event_image');
 
 	$eo_twitter = str_replace("'","\'",$_POST['eo_twitter']);
 	$eo_instagram = str_replace("'","\'",$_POST['eo_instagram']);	
+
+	$event_start_date = date("Y-m-d", strtotime($_POST['event_start_date']) );
+	$event_finish_date = date("Y-m-d", strtotime($_POST['event_finish_date']) );
 
  mysql_query("INSERT INTO event_organizer VALUES (NULL,
  										'$eo_name',
@@ -181,8 +204,8 @@ $event_finish_time = $_POST['event_finish_time_hour'].':'.$_POST['event_finish_t
 
  mysql_query("INSERT INTO event VALUES ('',
  										'$event_title',
- 										'$_POST[event_start_date]',
- 										'$_POST[event_finish_date]',
+ 										'$event_start_date',
+ 										'$event_finish_date',
  										'$event_start_time',
  										'$event_finish_time',
  										'$event_city',
@@ -206,12 +229,13 @@ $event_finish_time = $_POST['event_finish_time_hour'].':'.$_POST['event_finish_t
  										'$now',
  										'$_SESSION[user_id]',
  										'$_SESSION[user_type]',
- 										'$now'
-
- 										) ");
+ 										'$now',
+ 										'$overlay'
+ 										) ") ;
  
-echo mysql_error();
+echo mysql_error(); 
 ?>
+
 <meta http-equiv="refresh" content="0; url=event_view.php" />
 <?php
 

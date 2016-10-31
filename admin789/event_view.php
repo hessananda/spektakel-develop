@@ -27,7 +27,6 @@
 		$syarat_all = "WHERE id_user_yang_input = '".$_SESSION['user_id']."' AND event_input_by = '".$_SESSION['user_type']."' ";
 	}
 
-
 //start coding tentang buka tab
 	$belum_direview_active = '';
 	$belum_direview_in = '';
@@ -258,13 +257,13 @@
 																<div class="col-xs-6">
 																	<button class="btn btn-primary btn-block" onclick="location.href = 'event_edit.php?id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
-																	Ubah/Edit
+																	Ubah
 																	</button>
 																</div><!-- /.col-xs-6 -->
 																<div class="col-xs-6">
 																	<button class="btn btn-danger btn-block" onclick="location.href = 'event_action.php?action=hapus&id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-																	Hapus/Delete
+																	Hapus
 																	</button>
 																</div><!-- /.col-xs-6 -->
 															</div><!-- /.row -->
@@ -363,13 +362,13 @@
 																<div class="col-xs-6">
 																	<button class="btn btn-primary btn-block" onclick="location.href = 'event_edit.php?id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
-																	Ubah/Edit
+																	Ubah
 																	</button>
 																</div><!-- /.col-xs-6 -->
 																<div class="col-xs-6">
 																	<button class="btn btn-danger btn-block" onclick="location.href = 'event_action.php?action=hapus&id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-																	Hapus/Delete
+																	Hapus
 																	</button>
 																</div><!-- /.col-xs-6 -->
 															</div><!-- /.row -->
@@ -468,13 +467,13 @@
 																<div class="col-xs-6" >
 																	<button class="btn btn-primary btn-block" onclick="location.href = 'event_edit.php?id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
-																	Ubah/Edit
+																	Ubah
 																	</button>
 																</div><!-- /.col-xs-6 -->
 																<div class="col-xs-6">
 																	<button class="btn btn-danger btn-block" onclick="location.href = 'event_action.php?action=hapus&id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-																	Hapus/Delete
+																	Hapus
 																	</button>
 																</div><!-- /.col-xs-6 -->
 															</div><!-- /.row -->
@@ -577,13 +576,13 @@
 																<div class="col-xs-6">
 																	<button class="btn btn-primary btn-block" onclick="location.href = 'event_edit.php?id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
-																	Ubah/Edit
+																	Ubah
 																	</button>
 																</div><!-- /.col-xs-6 -->
 																<div class="col-xs-6">
 																	<button class="btn btn-danger btn-block" onclick="location.href = 'event_action.php?action=hapus&id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-																	Hapus/Delete
+																	Hapus
 																	</button>
 																</div><!-- /.col-xs-6 -->
 															</div><!-- /.row -->
@@ -702,13 +701,13 @@
 																<div class="col-xs-6">
 																	<button class="btn btn-primary btn-block" onclick="location.href = 'event_edit.php?id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
-																	Ubah/Edit
+																	Ubah
 																	</button>
 																</div><!-- /.col-xs-6 -->
 																<div class="col-xs-6">
 																	<button class="btn btn-danger btn-block" onclick="location.href = 'event_action.php?action=hapus&id=<?php echo $event['event_id']?>';">
 																	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-																	Hapus/Delete
+																	Hapus
 																	</button>
 																</div><!-- /.col-xs-6 -->
 															</div><!-- /.row -->

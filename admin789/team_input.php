@@ -90,6 +90,13 @@
 										<input type="text" class="form-control" name="team_position" />
 									</div>
 								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Email</label>
+									<div class="col-lg-5">
+										<input type="text" class="form-control" name="team_email" />
+									</div>
+								</div>
 	
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Deskripsi / Description</label>

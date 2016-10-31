@@ -84,7 +84,7 @@
 									  <div class="panel-heading">
 										<h3 class="panel-title">
 											<a class="block-collapse" data-parent="#accordion-1" data-toggle="collapse" href="#accordion-1-child-1">
-											Informasi lebih lanjut / More information
+											Informasi lebih lanjut
 											<span class="right-content">
 												<span class="right-icon">
 													<i class="glyphicon glyphicon-minus icon-collapse"></i>
@@ -97,27 +97,27 @@
 										  <div class="panel-body">
 											<table>
 												<tr>
-													<td>Tanggal Mulai/ Start Date</td>
+													<td>Tanggal Mulai</td>
 													<td>&nbsp&nbsp:&nbsp&nbsp</td>
 													<td><?php echo tgl_indo($event['event_start_date']) ; ?></td>
 												</tr>
 												<tr>
-													<td>Tanggal Selesai/ Finish Date</td>
+													<td>Tanggal Selesai</td>
 													<td>&nbsp&nbsp:&nbsp&nbsp</td>
 													<td><?php echo tgl_indo($event['event_finish_date']) ; ?></td>
 												</tr>
 												<tr>
-													<td>Waktu Mulai / Start Time</td>
+													<td>Waktu Mulai</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo date("H:i", strtotime($event['event_start_time'])) ; ?></td>
 												</tr>
 												<tr>
-													<td>Waktu Selesai / Finish Time</td>
+													<td>Waktu Selesai</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo date("H:i", strtotime($event['event_finish_time'])) ?></td>
 												</tr>
 												<tr>
-													<td>Provinsi / Province</td>
+													<td>Provinsi</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php
 													$sql = "SELECT * FROM provinces WHERE id = '$event[event_province]' ";
@@ -127,23 +127,23 @@
 												</tr>
 
 												<tr>
-													<td>Kota / City</td>
+													<td>Kota / Kabupaten</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $event['event_city'] ; ?></td>
 												</tr>
 												<tr>
-													<td>Lokasi / Location</td>
+													<td>Lokasi</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $event['event_location'] ; ?></td>
 												</tr>
 
 												<tr>
-													<td>Detail Alamat / Detail Address</td>
+													<td>Detail Alamat</td>
 													<td>&nbsp&nbsp:&nbsp&nbsp</td>
 													<td><?php echo $event['event_detail_address'] ; ?></td>
 												</tr>
 												<tr>
-													<td>Tautan acara / Event link</td>
+													<td>Tautan acara</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $event['event_link'] ; ?></td>
 												</tr>
@@ -153,9 +153,9 @@
 													<td><?php //echo $event['event_gmap_link'] ; ?></td>
 												</tr> -->
 												<tr>
-													<td>Kategori Event / Event Category</td>
+													<td>Kategori Event</td>
 													<td>&nbsp&nbsp:</td>
-													<td><?php echo $event['event_category'] ; ?></td>
+													<td><?php echo $event['event_category']==0?"Tidak Ada Category":$event['event_category'] ; ?></td>
 												</tr>
 
 											
@@ -164,30 +164,25 @@
 											<?php $eo = mysql_fetch_assoc(mysql_query("SELECT * FROM event_organizer WHERE eo_id = '$event[event_organizer_id]' ")) ?>
 											<table>
 												<tr>
-													<td>Nama panitia acara / Event Organizer Name</td>
+													<td>Nama Panitia Acara</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $eo['eo_name'] ; ?></td>
 												</tr>
 												<tr>
-													<td>Nama kontak / Contact Name</td>
+													<td>Nama Kontak</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $eo['eo_contact_name'] ; ?></td>
 												</tr>
 												<tr>
-													<td>Nomor kontak / Contact Number</td>
+													<td>Nomor Kontak</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $eo['eo_contact_number'] ; ?></td>
 												</tr>
 												<tr>
-													<td>Nomor kontak / Contact Number</td>
+													<td>Email</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $eo['eo_email'] ; ?></td>
-												</tr>
-												<tr>
-													<td>Alamat Panitia Acara / Event Organizer Address</td>
-													<td>&nbsp&nbsp:</td>
-													<td><?php echo $eo['eo_address'] ; ?></td>
-												</tr>
+												</tr>												
 
 												<tr>
 													<td>Website</td>
@@ -201,7 +196,7 @@
 												</tr>
 
 												<tr>
-													<td>Facebook</td>
+													<td>Twitter</td>
 													<td>&nbsp&nbsp:</td>
 													<td><?php echo $eo['eo_twitter'] ; ?></td>
 												</tr>
@@ -229,9 +224,9 @@
 										</select>
 									</div><!-- /.col-xs-6 -->
 										<div class="col-sm-9 col-xs-6">
-											<button <?php echo $_SESSION['user_type']=='kontributor'?'style="display:none;" ':'' ?> class="btn btn-success">Simpan Perubahan/Save Change</button>
+											<button <?php echo $_SESSION['user_type']=='kontributor'?'style="display:none;" ':'' ?> class="btn btn-success">Simpan Perubahan Status</button>
 											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-											<a href="event_edit.php?id=<?php echo $id ?>" class="btn btn-warning">Edit</a>
+											<a href="event_edit.php?id=<?php echo $id ?>" class="btn btn-warning">Ubah</a>
 										</div><!-- /.col-xs-6 -->
 									</form>
 

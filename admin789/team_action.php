@@ -1,7 +1,7 @@
 <?php
 
 include "config/koneksi.php";
-include "../config/file_action.php";
+include "config/file_action.php";
 $hesa = new action;
 session_start();
 
@@ -28,7 +28,8 @@ elseif ($action=='edit')
 
 	$memberUpSelect = "UPDATE team SET team_name = '$_POST[team_name]',
 					   team_content = '$_POST[team_content]',
-					   team_position = '$_POST[team_position]'					   
+					   team_position = '$_POST[team_position]',
+					   team_email = '$_POST[team_email]'					   
 					   
 					   WHERE team_id = '$id'";
 
@@ -63,7 +64,8 @@ $hesa->upload_file("../images/team",'team_image');
  										'$_POST[team_name]',
  										'$_POST[team_position]',
  										'$_POST[team_content]',
- 										'$nama_final'									
+ 										'$nama_final',			
+ 										'$_POST[team_email]'
  										) ");
  
 echo mysql_error();

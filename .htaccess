@@ -1,0 +1,42 @@
+
+RewriteEngine off
+
+RewriteRule ^Penerbit-Langit-Inspirasi$ beranda.php?yosefmurya=langitinspirasi [L]
+
+RewriteRule ^([^/\.]+)/?$ detail.php?id=$1 [L]
+RewriteRule ^recommended-ebook\.html$ beranda.php?yosefmurya=recommendedebook&id=$1 [L]
+RewriteRule ^pagerecebook-(.*)\.html$ beranda.php?yosefmurya=recommendedebook&pagerecebook=$1 [L]
+RewriteRule ^mostread-ebook\.html$ beranda.php?yosefmurya=mostreadebook&id=$1 [L]
+RewriteRule ^pagemostebook-(.*)\.html$ beranda.php?yosefmurya=mostreadebook&pagemostebook=$1 [L]
+RewriteRule ^hasil-searching\.html$ beranda.php?yosefmurya=hasilsearching&id=$1 [L]
+RewriteRule ^kategori-([0-9]+)-(.*)\.html$ beranda.php?yosefmurya=detailkategori&id=$1 [L]
+RewriteRule ^halkategori-([0-9]+)-(.*)\.html$ beranda.php?yosefmurya=detailkategori&id=$1&halkategori=$2 [L]
+RewriteRule ^kontak-detail\.html$ beranda.php?yosefmurya=kontakdetail&id=$1 [L]
+
+RewriteRule ^keranjang-(.*)\.html$ team.php?yosefmurya=keranjangbelanja&id=$1 [L]
+RewriteRule ^selesai-belanja(.*)\.html$ beranda.php?yosefmurya=selesaibelanja [L]
+RewriteRule ^login-pemesan(.*)\.html$ beranda.php?yosefmurya=loginpemesan [L]
+RewriteRule ^login\.html$ beranda.php?yosefmurya=loginpemesan&cart=yes [L]
+
+
+RewriteRule ^tim(.*)\.html$ team.php?yosefmurya=checkout1 [L]
+RewriteRule ^cek_login_copy1(.*)\.html$ beranda.php?yosefmurya=cek_login_copy1 [L]
+RewriteRule ^cek_login_copy2(.*)\.html$ beranda.php?yosefmurya=cek_login_copy2 [L]
+
+RewriteRule ^dashboard_home\.html$ beranda.php?yosefmurya=dashboardmember&dashboard=home [L]
+RewriteRule ^aksi_dashboard_biodata\.html$ dashboard/aksi_dashboard.php?yosefmurya=dashboardmember&dashboard=home&act=updatebiodata [L]
+RewriteRule ^aksi_dashboard_order\.html$ dashboard/aksi_dashboard.php?yosefmurya=dashboardmember&dashboard=home&act=konfirmasiorder [L]
+RewriteRule ^aksi_dashboard_deposit\.html$ dashboard/aksi_dashboard.php?yosefmurya=dashboardmember&dashboard=home&act=konfirmasideposit [L]
+RewriteRule ^biodata\.html$ beranda.php?yosefmurya=dashboardmember&dashboard=biodata [L]
+RewriteRule ^OH\.html$ beranda.php?yosefmurya=dashboardmember&dashboard=OH [L]
+RewriteRule ^AS\.html$ beranda.php?yosefmurya=dashboardmember&dashboard=AS [L]
+RewriteRule ^KO\.html$ beranda.php?yosefmurya=dashboardmember&dashboard=KO [L]
+RewriteRule ^KD\.html$ beranda.php?yosefmurya=dashboardmember&dashboard=KD [L]
+
+RewriteRule ^logout-pemesan(.*)\.html$ beranda.php?yosefmurya=logoutpemesan [L]
+RewriteRule ^cek_login(.*)\.html$ beranda.php?yosefmurya=ceklogin 
+RewriteRule ^daftar-member(.*)\.html$ beranda.php?yosefmurya=daftarmemberbaru [L]
+RewriteRule ^daftar-member-login(.*)\.html$ beranda.php?yosefmurya=daftarmemberbaru&halo=yes [L]
+RewriteRule ^simpan-data-pemesan\.html$ beranda.php?yosefmurya=simpandatapemesan [L]
+RewriteRule ^hubungi-kami\.html$ beranda.php?yosefmurya=hubungikami [L]
+RewriteRule ^hasil-pencarian(.*)\.html$ beranda.php?yosefmurya=hasilpencarian [L]

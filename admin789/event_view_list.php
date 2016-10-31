@@ -171,7 +171,7 @@
 											<td><p hidden><?php echo $user['event_start_date'] ?></p> <?php echo tgl_indo($user['event_start_date']) ?></td>
 											<td><p hidden><?php echo $user['event_finish_date'] ?></p><?php echo tgl_indo($user['event_finish_date']) ?></td>
 											<td class="center"> <?php echo $user['event_city'] ?></td>
-											<td><a href="event_edit.php?id=<?php echo $user['event_id'] ?>">Edit</a> 
+											<td><a href="event_edit.php?id=<?php echo $user['event_id'] ?>">Ubah</a> 
 											<?php
 												if ($_SESSION['user_type']=='super admin' OR $_SESSION['user_type']=='admin konten') {
 												?>

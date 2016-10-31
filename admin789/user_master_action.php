@@ -1,7 +1,7 @@
 <?php
 
 include "config/koneksi.php";
-include "../config/file_action.php";
+include "config/file_action.php";
 $hesa = new action;
 session_start();
 

@@ -34,7 +34,7 @@
 					<!-- Begin breadcrumb -->
 					<ol class="breadcrumb default square rsaquo sm">
 						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-						<li><a href="user_view.php">User</li>
+						<li><a href="user_view.php">User</a></li>
 						<li class="active">Edit User</li>
 					</ol>
 					<!-- End breadcrumb -->

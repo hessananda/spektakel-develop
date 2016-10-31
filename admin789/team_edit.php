@@ -106,6 +106,13 @@
 								</div>
 
 								<div class="form-group">
+									<label class="col-lg-3 control-label">Email</label>
+									<div class="col-lg-5">
+										<input type="text" class="form-control" name="team_email" value="<?php echo $slide['team_email'] ; ?>" />
+									</div>
+								</div>
+
+								<div class="form-group">
 									<label class="col-lg-3 control-label">Deskripsi / Description</label>
 									<div class="col-lg-5">
 										<textarea rows="10" name="team_content" class="form-control no-resize"><?php echo $slide['team_content'] ; ?></textarea>

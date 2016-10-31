@@ -51,7 +51,7 @@
 				
 				<div class="container-fluid">
 					<!-- Begin page heading -->
-					<h1 class="page-heading">Slider</h1>
+					<h1 class="page-heading">Slide</h1>
 					<!-- End page heading -->
 				
 					<!-- Begin breadcrumb -->
@@ -72,25 +72,17 @@
 						<form id="eventform" method="post" action="slider_action.php?action=edit&id=<?php echo $id ?>" class="form-horizontal" enctype="multipart/form-data" >
 							
 							<fieldset>
-								<legend>Ubah Slide / Edit Slide</legend>
+								<legend>Ubah Slide</legend>								
 
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Judul Slide / Slide Title</label>
-									<div class="col-lg-5">
-										<input type="text" value="<?php echo $slide['slider_title'] ?>" class="form-control" name="slide_title" />
-									</div>
-								</div>
-								
-
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Gambar Lama / Old Image</label>
+									<label class="col-lg-3 control-label">Gambar Lama</label>
 									<div class="col-lg-5">
 										<img width="50%" height="50%" src="../images/slider/<?php echo $slide['slider_image'] ?>">
 									</div>
 								</div>
-
+								
 								<div class="form-group">
-									<label class="col-lg-3 control-label"> Gantikan Gambar ?/ Replace Image ?</label>
+									<label class="col-lg-3 control-label"> Gantikan Gambar ?</label>
 									<div class="col-lg-5">
 										<div class="input-group">
 										<input type="text" class="form-control" readonly>
@@ -102,27 +94,34 @@
 									</div><!-- /.input-group -->
 									</div>
 								</div>
-														
+									
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Isi / Content</label>
+									<label class="col-lg-3 control-label">Ribbon</label>
 									<div class="col-lg-5">
-										<textarea rows="10" name="slide_content" class="form-control no-resize"><?php echo $slide['slider_content'] ; ?></textarea>
+										<input type="text" class="form-control" name="slide_content" value="<?php echo $slide['slider_content'] ; ?>" />
 									</div>
-								</div>								
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Judul Slide</label>
+									<div class="col-lg-5">
+										<input type="text" value="<?php echo $slide['slider_title'] ?>" class="form-control" name="slide_title" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Kata-kata</label>
+									<div class="col-lg-5">
+										<input type="text" class="form-control" name="slide_button" value="<?php echo $slide['slider_button'] ; ?>" />
+									</div>
+								</div>																												
 														
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Tautan Slide / Slide link</label>
 									<div class="col-lg-5">
 										<input type="text" class="form-control" name="slide_link" value="<?php echo $slide['slider_link'] ; ?>" />
 									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Kata di Tombol / Slide Button word</label>
-									<div class="col-lg-5">
-										<input type="text" class="form-control" name="slide_button" value="<?php echo $slide['slider_button'] ; ?>" />
-									</div>
-								</div>
+								</div>								
 
 							</fieldset>				
 

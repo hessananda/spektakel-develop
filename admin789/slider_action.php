@@ -1,7 +1,7 @@
 <?php
 
 include "config/koneksi.php";
-include "../config/file_action.php";
+include "config/file_action.php";
 $hesa = new action;
 session_start();
 
@@ -13,7 +13,7 @@ if ($action=='hapus')
 {
 	$id=$_GET['id'];	
 
-	$hesa->delete_file('slider_image','slider',"../images/slider",'slider_id',$id);
+	@$hesa->delete_file('slider_image','slider',"../images/slider",'slider_id',$id);
 
 	$memberDelSelect = mysql_query("DELETE FROM slider WHERE slider_id = '$id'");
 	
@@ -40,7 +40,7 @@ elseif ($action=='edit')
 
 	if ($nama_foto <> '')
 		{
-			$hesa->delete_file('slider_image','slider',"../images/slider",'slider_id',$id);
+			@$hesa->delete_file('slider_image','slider',"../images/slider",'slider_id',$id);
 
 			$hesa->upload_file("../images/slider",'slider_image');
 
